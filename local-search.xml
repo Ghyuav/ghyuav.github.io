@@ -8,7 +8,7 @@
     <link href="/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     <url>/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<h2 id="Ubuntu22-10中腾讯会议不支持wayland协议解决方法"><a href="#Ubuntu22-10中腾讯会议不支持wayland协议解决方法" class="headerlink" title="Ubuntu22.10中腾讯会议不支持wayland协议解决方法"></a>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</h2><p><img src="/img/20230111095507.png" alt="这是图片" title="Ubuntu22.10中腾讯会议不支持wayland协议"></p><h3 id="网上其他不可行方法"><a href="#网上其他不可行方法" class="headerlink" title="网上其他不可行方法"></a>网上其他<font color="red">不可行</font>方法</h3><p>正确方法在<a href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E6%B3%95">这里</a><br>ubuntu关闭waylandsudo</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/gdm3/custom.conf<br></code></pre></td></tr></table></figure><p>把 #WaylandEnable=false 的注释井号去掉</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo service gdm3 restart<br></code></pre></td></tr></table></figure><blockquote><p>作者：玉冷佩丁东<br>链接：<a href="https://www.zhihu.com/question/538842265/answer/2652565788">https://www.zhihu.com/question/538842265/answer/2652565788</a><br>来源：知乎</p></blockquote><p>这种方法只会让我的屏幕<strong>发黄发亮</strong>晃瞎我的眼<del>（别问我为什么没有图，截图截不出那效果）</del></p><h2 id="可行方法"><a href="#可行方法" class="headerlink" title="可行方法"></a>可行方法</h2><p>其实很简单<br>第一步，先注销<br><img src="/img/20230111095806.png" alt="这是图片" title="注销"><br>第二步，在输入密码界面点击“小齿轮”然后点击“Ubuntu on Xorg”<br><img src="/img/20230111100309.png" alt="这是图片" title="Ubuntu on Xorg"><br>接下来登入后你会发现，腾讯会议可以打开了<br><img src="/img/20230111101236.png" alt="这是图片" title="完成！"><br>就是这么简单</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Ubuntu22-10中腾讯会议不支持wayland协议解决方法"><a href="#Ubuntu22-10中腾讯会议不支持wayland协议解决方法" class="headerlink" title="Ubuntu22.10中腾讯会议不支持wayland协议解决方法"></a>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</h2><p><img src="/img/20230111095507.png" alt="这是图片" title="Ubuntu22.10中腾讯会议不支持wayland协议"></p><h3 id="网上一种不可行方法，正确方法在这里"><a href="#网上一种不可行方法，正确方法在这里" class="headerlink" title="网上一种不可行方法，正确方法在这里"></a>网上一种<font color="red">不可行</font>方法，正确方法在<a href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E6%B3%95">这里</a></h3><p>ubuntu关闭wayland</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/gdm3/custom.conf<br></code></pre></td></tr></table></figure><p>把 #WaylandEnable=false 的注释井号去掉</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo service gdm3 restart<br></code></pre></td></tr></table></figure><blockquote><p>作者：玉冷佩丁东<br>链接：<a href="https://www.zhihu.com/question/538842265/answer/2652565788">https://www.zhihu.com/question/538842265/answer/2652565788</a><br>来源：知乎</p></blockquote><p>这种方法只会让我的屏幕<strong>发黄发亮</strong>晃瞎我的眼<del>（别问我为什么没有图，截图截不出那效果）</del></p><h3 id="可行方法"><a href="#可行方法" class="headerlink" title="可行方法"></a>可行方法</h3><p>其实很简单<br>第一步，先注销<br><img src="/img/20230111095806.png" alt="这是图片" title="注销"><br>第二步，在输入密码界面点击“小齿轮”然后点击“Ubuntu on Xorg”<br><img src="/img/20230111100309.png" alt="这是图片" title="Ubuntu on Xorg"><br>接下来登入后你会发现，腾讯会议可以打开了<br><img src="/img/20230111101236.png" alt="这是图片" title="完成！"><br>就是这么简单</p>]]></content>
     
     
     
@@ -35,9 +35,9 @@
     
     <tags>
       
-      <tag>网页</tag>
-      
       <tag>木鱼</tag>
+      
+      <tag>小游戏</tag>
       
     </tags>
     
