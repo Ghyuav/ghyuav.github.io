@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>hexo-fluid免费部署评论功能</title>
+    <link href="/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"/>
+    <url>/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</url>
+    
+    <content type="html"><![CDATA[<h2 id="hexo-fluid免费部署评论功能"><a href="#hexo-fluid免费部署评论功能" class="headerlink" title="hexo-fluid免费部署评论功能"></a>hexo-fluid免费部署评论功能</h2><h3 id="giscus"><a href="#giscus" class="headerlink" title="giscus"></a>giscus</h3><p>giscus是一个由 GitHub Discussions 驱动的评论系统，部署方便，无跟踪，无广告，永久免费。<br>无需数据库。全部数据均储存在 GitHub Discussions 中。</p><p>首先，要在你的github中安装<a href="https://github.com/apps/giscus">giscus app</a><br>点击”install”即可<br><img src="/img/202301120806.png" alt="这是图片" title="giscus app"></p><p>然后如图依次点击”Only select repositories”和”Select repositories”,并选择你存储评论的仓库。<br>点击”install”安装<br><img src="/img/202301120808.png" alt="这是图片" title="giscus"></p><p>打开<a href="https://giscus.app/">giscus官网</a>，进一步配置<br>找到 配置-仓库<br>填入仓库<br><img src="/img/20230112091604.png" alt="这是图片" title="配置-仓库"></p><p>如果提示”<font color='red'>无法在此仓库上使用 giscus。请确保以上条件均已满足。</font>“<br>你需要确保此仓库是公开的<br>Discussions功能已在你的仓库中启用。</p><p>启用Discussions功能的方法：<br>在你的仓库中点击”Settings”，找到”General-Features”,并启用”Discussions”<br><img src="/img/202301120931.png" alt="这是图片" title="启用 Discussions"></p><p>接下来回到<a href="https://giscus.app/">giscus官网</a>，填入仓库<br>当显示”<font color='green'>成功！此仓库满足所有条件。</font>“时，如图配置”页面 ↔️ discussion 映射关系”、”Discussion 分类”(“特性”、”主题”根据个人喜好配置)<br><img src="/img/202301120934.png" alt="这是图片" title="配置 页面 ↔️ discussion 映射关系、Discussion 分类"><br>最后在”启用 giscus”中将对应的</p><ul><li>repo</li><li>repo-id</li><li>category</li><li>category-id</li><li>mapping</li><li>input-position</li><li>lang</li></ul><p>分别填入_config.yml中giscus插件的必要参数<br>并在_config.yml中启用评论插件</p><p>最终效果如下<br><img src="/img/202301121025.png" alt="这是图片" title="最终效果"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+      <tag>giscus</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</title>
     <link href="/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     <url>/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
