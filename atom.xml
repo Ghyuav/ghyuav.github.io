@@ -1,131 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ghyuav的博客</title>
   
   
+  <link href="https://ghyuav.netlify.app/atom.xml" rel="self"/>
+  
+  <link href="https://ghyuav.netlify.app/"/>
+  <updated>2023-01-14T00:30:01.505Z</updated>
+  <id>https://ghyuav.netlify.app/</id>
+  
+  <author>
+    <name>Ghyuav</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Winodws UEFI引导修复</title>
-    <link href="/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/"/>
-    <url>/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/</url>
+    <link href="https://ghyuav.netlify.app/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/"/>
+    <id>https://ghyuav.netlify.app/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/</id>
+    <published>2023-01-13T01:52:22.000Z</published>
+    <updated>2023-01-14T00:30:01.505Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Winodws-UEFI引导修复"><a href="#Winodws-UEFI引导修复" class="headerlink" title="Winodws UEFI引导修复"></a>Winodws UEFI引导修复</h2><p>这两天闲着没事，在实体机上装Ubuntu双系统，用了一个残次品U盘当启动盘，刚开始还好好的呢，突然就挂了，grub把Windows Boot Manager覆盖了，Ubuntu还没装完，一重启，好家伙，哪个系统都进不去。在网上搜了好长时间，整理出了这个方法。（懒得重装系统，还有，<strong>不要用残次品U盘</strong>！）</p><h3 id="修复方法"><a href="#修复方法" class="headerlink" title="修复方法"></a>修复方法</h3><p>1.准备一个U盘（大于8G），并制作启动盘。<br>2.U盘启动时多次强制重启打断启动，过几次会自动进入到系统修复界面<br>3.依次点击 疑难解答-高级选项-命令提示符<br>输入以下命令</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">diskpart<br>list <span class="hljs-built_in">vol</span><br></code></pre></td></tr></table></figure><p>会输出</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmd">DISKPART&gt; list <span class="hljs-built_in">vol</span><br><br>  卷 ###      LTR  标签         <span class="hljs-built_in">FS</span>     类型        大小     状态       信息<br>  ----------  ---  -----------  -----  ----------  -------  ---------  --------<br>  卷     <span class="hljs-number">0</span>     D                NTFS   磁盘分区         <span class="hljs-number">931</span> GB  正常<br>  卷     <span class="hljs-number">1</span>     E                NTFS   磁盘分区         <span class="hljs-number">111</span> GB  正常<br>  卷     <span class="hljs-number">2</span>                      FAT32  磁盘分区         <span class="hljs-number">512</span> MB  正常         系统<br>  卷     <span class="hljs-number">3</span>     C   新加卷          NTFS   磁盘分区         <span class="hljs-number">476</span> GB  正常         启动<br>  卷     <span class="hljs-number">4</span>     G   wepe         exFAT  可移动           <span class="hljs-number">28</span> GB  正常<br>  卷     <span class="hljs-number">5</span>     F   新加卷          NTFS   磁盘分区        <span class="hljs-number">1863</span> GB  正常<br></code></pre></td></tr></table></figure><p>可见，”卷 2”是EFI分区（EFI分区一般大小只有几百MB，文件系统一般为FAT32且在系统盘上）</p><p>接下来输入以下命令</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmd">select volume x (x是刚才的EFI分区卷号，例如：<span class="hljs-number">2</span>)<br>assign letter=J (z是给EFI分区分配一个盘符，要从这里创建启动文件)<br><span class="hljs-keyword">exit</span> (退出DISKPART)<br><span class="hljs-built_in">cd</span> /d J:\EFI\Microsoft\Boot\ (J是刚才给EFI分区分配的盘符)<br>bootrec/fixboot<br><span class="hljs-built_in">ren</span> BCD BCD.bak<br>bcdboot C:\Windows /<span class="hljs-number">1</span> zh-cn /s J: /f ALL (C:是Windows所在的盘符，J:是刚才给EFI分区分配的盘符)<br>bootrec /rebuildbcd<br></code></pre></td></tr></table></figure><p>命令执行完后重启，拔出启动盘，你会发现Winodws UEFI引导修复了，成功进入系统。</p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Winodws-UEFI引导修复&quot;&gt;&lt;a href=&quot;#Winodws-UEFI引导修复&quot; class=&quot;headerlink&quot; title=&quot;Winodws UEFI引导修复&quot;&gt;&lt;/a&gt;Winodws UEFI引导修复&lt;/h2&gt;&lt;p&gt;这两天闲着没事，在实体机上装</summary>
+      
     
-    <tags>
-      
-      <tag>Ubuntu</tag>
-      
-      <tag>Windows</tag>
-      
-    </tags>
+    
+    
+    
+    <category term="Ubuntu" scheme="https://ghyuav.netlify.app/tags/Ubuntu/"/>
+    
+    <category term="Windows" scheme="https://ghyuav.netlify.app/tags/Windows/"/>
     
   </entry>
   
-  
-  
   <entry>
     <title>hexo-fluid免费部署评论功能</title>
-    <link href="/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"/>
-    <url>/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</url>
+    <link href="https://ghyuav.netlify.app/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"/>
+    <id>https://ghyuav.netlify.app/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</id>
+    <published>2023-01-11T23:48:04.000Z</published>
+    <updated>2023-01-14T00:26:50.354Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hexo-fluid免费部署评论功能"><a href="#hexo-fluid免费部署评论功能" class="headerlink" title="hexo-fluid免费部署评论功能"></a>hexo-fluid免费部署评论功能</h2><h3 id="giscus"><a href="#giscus" class="headerlink" title="giscus"></a>giscus</h3><p>giscus是一个由 GitHub Discussions 驱动的评论系统，部署方便，无跟踪，无广告，永久免费。<br>无需数据库。全部数据均储存在 GitHub Discussions 中。</p><p>首先，要在你的github中安装<a href="https://github.com/apps/giscus">giscus app</a><br>点击”install”即可<br><img src="/img/202301120806.png" alt="这是图片" title="giscus app"></p><p>然后如图依次点击”Only select repositories”和”Select repositories”,并选择你存储评论的仓库。<br>点击”install”安装<br><img src="/img/202301120808.png" alt="这是图片" title="giscus"></p><p>打开<a href="https://giscus.app/">giscus官网</a>，进一步配置<br>找到 配置-仓库<br>填入仓库<br><img src="/img/20230112091604.png" alt="这是图片" title="配置-仓库"></p><p>如果提示”<font color='red'>无法在此仓库上使用 giscus。请确保以上条件均已满足。</font>“<br>你需要确保此仓库是公开的<br>Discussions功能已在你的仓库中启用。</p><p>启用Discussions功能的方法：<br>在你的仓库中点击”Settings”，找到”General-Features”,并启用”Discussions”<br><img src="/img/202301120931.png" alt="这是图片" title="启用 Discussions"></p><p>接下来回到<a href="https://giscus.app/">giscus官网</a>，填入仓库<br>当显示”<font color='green'>成功！此仓库满足所有条件。</font>“时，如图配置”页面 ↔️ discussion 映射关系”、”Discussion 分类”(“特性”、”主题”根据个人喜好配置)<br><img src="/img/202301120934.png" alt="这是图片" title="配置 页面 ↔️ discussion 映射关系、Discussion 分类"><br>最后在”启用 giscus”中将对应的</p><ul><li>repo</li><li>repo-id</li><li>category</li><li>category-id</li><li>mapping</li><li>input-position</li><li>lang</li></ul><p>分别填入_config.yml中giscus插件的必要参数<br>并在_config.yml中启用评论插件</p><p>最终效果如下<br><img src="/img/202301121025.png" alt="这是图片" title="最终效果"></p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;h2 id=&quot;hexo-fluid免费部署评论功能&quot;&gt;&lt;a href=&quot;#hexo-fluid免费部署评论功能&quot; class=&quot;headerlink&quot; title=&quot;hexo-fluid免费部署评论功能&quot;&gt;&lt;/a&gt;hexo-fluid免费部署评论功能&lt;/h2&gt;&lt;h3 id=&quot;g</summary>
+      
     
-    <tags>
-      
-      <tag>hexo</tag>
-      
-      <tag>giscus</tag>
-      
-    </tags>
+    
+    
+    
+    <category term="hexo" scheme="https://ghyuav.netlify.app/tags/hexo/"/>
+    
+    <category term="giscus" scheme="https://ghyuav.netlify.app/tags/giscus/"/>
     
   </entry>
   
-  
-  
   <entry>
     <title>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</title>
-    <link href="/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <url>/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <link href="https://ghyuav.netlify.app/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://ghyuav.netlify.app/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2023-01-11T01:45:35.000Z</published>
+    <updated>2023-01-14T00:29:39.161Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Ubuntu22-10中腾讯会议不支持wayland协议解决方法"><a href="#Ubuntu22-10中腾讯会议不支持wayland协议解决方法" class="headerlink" title="Ubuntu22.10中腾讯会议不支持wayland协议解决方法"></a>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</h2><p><img src="/img/20230111095507.png" alt="这是图片" title="Ubuntu22.10中腾讯会议不支持wayland协议"></p><h3 id="网上一种不可行方法，正确方法在这里"><a href="#网上一种不可行方法，正确方法在这里" class="headerlink" title="网上一种不可行方法，正确方法在这里"></a>网上一种<font color="red">不可行</font>方法，正确方法在<a href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E6%B3%95">这里</a></h3><div class="note note-danger">            <p>这个方法为不可行方法，至少在我电脑上不可行，可行方法在<a href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E6%B3%95">这里</a></p>          </div><p>ubuntu关闭wayland</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/gdm3/custom.conf<br></code></pre></td></tr></table></figure><p>把 #WaylandEnable&#x3D;false 的注释井号去掉</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo service gdm3 restart<br></code></pre></td></tr></table></figure><blockquote><p>作者：玉冷佩丁东<br>链接：<a href="https://www.zhihu.com/question/538842265/answer/2652565788">https://www.zhihu.com/question/538842265/answer/2652565788</a><br>来源：知乎</p></blockquote><p>这种方法只会让我的屏幕<strong>发黄发亮</strong>晃瞎我的眼<del>（别问我为什么没有图，截图截不出那效果）</del></p><h3 id="可行方法"><a href="#可行方法" class="headerlink" title="可行方法"></a>可行方法</h3><p>其实很简单<br>第一步，先注销<br><img src="/img/20230111095806.png" alt="这是图片" title="注销"><br>第二步，在输入密码界面点击“小齿轮”然后点击“Ubuntu on Xorg”<br><img src="/img/20230111100309.png" alt="这是图片" title="Ubuntu on Xorg"><br>接下来登入后你会发现，腾讯会议可以打开了<br><img src="/img/20230111101236.png" alt="这是图片" title="完成！"><br>就是这么简单</p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Ubuntu22-10中腾讯会议不支持wayland协议解决方法&quot;&gt;&lt;a href=&quot;#Ubuntu22-10中腾讯会议不支持wayland协议解决方法&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu22.10中腾讯会议不支持wayland协议</summary>
+      
     
-    <tags>
-      
-      <tag>Ubuntu</tag>
-      
-      <tag>腾讯会议</tag>
-      
-    </tags>
+    
+    
+    
+    <category term="Ubuntu" scheme="https://ghyuav.netlify.app/tags/Ubuntu/"/>
+    
+    <category term="腾讯会议" scheme="https://ghyuav.netlify.app/tags/%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE/"/>
     
   </entry>
   
-  
-  
   <entry>
     <title>木鱼-修身养性</title>
-    <link href="/2023/01/10/%E6%9C%A8%E9%B1%BC-%E4%BF%AE%E8%BA%AB%E5%85%BB%E6%80%A7/"/>
-    <url>/2023/01/10/%E6%9C%A8%E9%B1%BC-%E4%BF%AE%E8%BA%AB%E5%85%BB%E6%80%A7/</url>
+    <link href="https://ghyuav.netlify.app/2023/01/10/%E6%9C%A8%E9%B1%BC-%E4%BF%AE%E8%BA%AB%E5%85%BB%E6%80%A7/"/>
+    <id>https://ghyuav.netlify.app/2023/01/10/%E6%9C%A8%E9%B1%BC-%E4%BF%AE%E8%BA%AB%E5%85%BB%E6%80%A7/</id>
+    <published>2023-01-10T12:10:26.000Z</published>
+    <updated>2023-01-14T00:31:23.272Z</updated>
     
     <content type="html"><![CDATA[<h2 id="敲木鱼，攒功德"><a href="#敲木鱼，攒功德" class="headerlink" title="敲木鱼，攒功德"></a>敲木鱼，攒功德</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><blockquote><p>木鱼是一种法器，多用于佛教、道教的功课与法会。相传鱼昼夜不合目，故刻木像鱼形，击之以警戒僧众应昼夜思道。形制有二：一为挺直鱼形，用来粥饭或集众、警众，悬挂在寺院走廊上。二为圆状鱼形，诵经时所用，放在案上。明、清以来，民间音乐和潮剧、粤剧中常用到木鱼。使木鱼除法器外兼具乐器功能。</p></blockquote><h3 id="来敲电子木鱼！"><a href="#来敲电子木鱼！" class="headerlink" title="来敲电子木鱼！"></a>来敲电子木鱼！</h3><p>点击黑圆以开始<br><a href="/html/muyu.html">全屏纯享</a></p><iframe src="/html/muyu.html" width=100% height="500" frameborder="0"></iframe>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;h2 id=&quot;敲木鱼，攒功德&quot;&gt;&lt;a href=&quot;#敲木鱼，攒功德&quot; class=&quot;headerlink&quot; title=&quot;敲木鱼，攒功德&quot;&gt;&lt;/a&gt;敲木鱼，攒功德&lt;/h2&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介</summary>
+      
     
-    <tags>
-      
-      <tag>木鱼</tag>
-      
-      <tag>小游戏</tag>
-      
-    </tags>
+    
+    
+    
+    <category term="木鱼" scheme="https://ghyuav.netlify.app/tags/%E6%9C%A8%E9%B1%BC/"/>
+    
+    <category term="小游戏" scheme="https://ghyuav.netlify.app/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
-  
-  
   <entry>
     <title>内网穿透-Terraria服务器</title>
-    <link href="/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <url>/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <link href="https://ghyuav.netlify.app/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://ghyuav.netlify.app/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
+    <published>2023-01-10T05:39:02.000Z</published>
+    <updated>2023-01-14T00:32:57.888Z</updated>
     
     <content type="html"><![CDATA[<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><h3 id="什么是内网穿透？"><a href="#什么是内网穿透？" class="headerlink" title="什么是内网穿透？"></a>什么是内网穿透？</h3><blockquote><p>内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。下面就相互通信的主机在网&gt;络中与 NAT 设备的相对位置介绍内网穿透方法。<br>UDP 内网穿透的实质是利用路由器上的NAT 系统。NAT 是一种将私有（保留）地址转化为合法IP地址的转换技术，它被广泛应用于各种类型 Internet 接入方式和各种类型&gt;的网络中。NAT可以完成重用地址，并且对于内部的网络结构可以实现对外隐蔽。<br>(摘自百度)</p></blockquote><p>说白了就是可以从远程服务器访问你的电脑。</p><h3 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h3><p>这里我推荐一个内网穿透软件，免费稳定。<br><img src="/img/20230110134703.png" alt="这是图片" title="sakura frp官网"><br><a href="https://www.natfrp.com/">sakura frp</a><br>这里用Terraria服务器作为演示（不仅可以用作游戏服务器，网站、远程桌面也可以）</p><p>首先你需要注册一个樱花穿透的账号，这里不多做演示，但是注册后需要实名认证，api要<strong>花费一元钱</strong><br>接下来下载樱花穿透的<a href="https://www.natfrp.com/tunnel/download">客户端启动器</a><br><img src="/img/20230110135615.png" alt="这是图片" title="下载安装后是这个样子的"><br>然后在樱花穿透网页的首页中点击<strong>查看访问密钥</strong>，并把访问密钥复制到启动器中登录<br>接下来在启动器中添加隧道，填入本地ip（127.0.0.1）、Terraria服务器的端口（默认为7777）、隧道名称及描述和穿透节点即可。<br>恭喜，到这里你就完成了，远程ip与端口可以在启动器-日志中看见。</p><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><p>最后把樱花穿透的帮助文档放在这里<a href="https://doc.natfrp.com/">文档入口</a><br>遇到问题可以在那里找到答案。</p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;h2 id=&quot;内网穿透&quot;&gt;&lt;a href=&quot;#内网穿透&quot; class=&quot;headerlink&quot; title=&quot;内网穿透&quot;&gt;&lt;/a&gt;内网穿透&lt;/h2&gt;&lt;h3 id=&quot;什么是内网穿透？&quot;&gt;&lt;a href=&quot;#什么是内网穿透？&quot; class=&quot;headerlink&quot; title=&quot;什</summary>
+      
     
-    <tags>
-      
-      <tag>服务器</tag>
-      
-      <tag>Terraria</tag>
-      
-    </tags>
+    
+    
+    
+    <category term="服务器" scheme="https://ghyuav.netlify.app/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Terraria" scheme="https://ghyuav.netlify.app/tags/Terraria/"/>
     
   </entry>
   
-  
-  
   <entry>
     <title>网站重写计划 - 新网站上线啦</title>
-    <link href="/2023/01/10/%E7%BD%91%E7%AB%99%E9%87%8D%E5%86%99%E8%AE%A1%E5%88%92/"/>
-    <url>/2023/01/10/%E7%BD%91%E7%AB%99%E9%87%8D%E5%86%99%E8%AE%A1%E5%88%92/</url>
+    <link href="https://ghyuav.netlify.app/2023/01/10/%E7%BD%91%E7%AB%99%E9%87%8D%E5%86%99%E8%AE%A1%E5%88%92/"/>
+    <id>https://ghyuav.netlify.app/2023/01/10/%E7%BD%91%E7%AB%99%E9%87%8D%E5%86%99%E8%AE%A1%E5%88%92/</id>
+    <published>2023-01-09T22:53:28.000Z</published>
+    <updated>2023-01-14T02:13:05.819Z</updated>
     
     <content type="html"><![CDATA[<h2 id="网站重写计划"><a href="#网站重写计划" class="headerlink" title="网站重写计划"></a>网站重写计划</h2><h3 id="重新上线"><a href="#重新上线" class="headerlink" title="重新上线"></a>重新上线</h3><p>鸽了有一年的时间了，终于有时间打理这里了</p><p>花了一下午，把以前的内容全删了，换上了<a href="https://hexo.io/">Hexo</a>框架<br>期间并不顺利，遇到了git抽风，github 404，netlify无法访问，各种奇葩错误：Failing build: Failed to prepare repo等<br>查了数百个文档，有的问题到现在也没解决。</p><h3 id="以后的计划"><a href="#以后的计划" class="headerlink" title="以后的计划"></a>以后的计划</h3><p>多写文章<br>多喝热水<br>多多读书<br>多多维护<br>……</p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;h2 id=&quot;网站重写计划&quot;&gt;&lt;a href=&quot;#网站重写计划&quot; class=&quot;headerlink&quot; title=&quot;网站重写计划&quot;&gt;&lt;/a&gt;网站重写计划&lt;/h2&gt;&lt;h3 id=&quot;重新上线&quot;&gt;&lt;a href=&quot;#重新上线&quot; class=&quot;headerlink&quot; title=&quot;重</summary>
+      
     
-    <tags>
-      
-      <tag>网站</tag>
-      
-    </tags>
+    
+    
+    
+    <category term="网站" scheme="https://ghyuav.netlify.app/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
-  
-  
-  
-</search>
+</feed>
