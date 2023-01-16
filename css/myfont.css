@@ -1,8 +1,0 @@
-@font-face {
-    /* font-properties */
-    font-family: rzcp2;
-    src:url('/font/rzcp2.ttf'),  
-}
-body {
-    font-family: rzcp2;
-}

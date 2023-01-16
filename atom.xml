@@ -6,7 +6,7 @@
   <link href="https://ghyuav.netlify.app/atom.xml" rel="self"/>
   
   <link href="https://ghyuav.netlify.app/"/>
-  <updated>2023-01-14T00:30:01.505Z</updated>
+  <updated>2023-01-16T01:56:54.730Z</updated>
   <id>https://ghyuav.netlify.app/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>访问谷歌全家桶？</title>
+    <link href="https://ghyuav.netlify.app/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/"/>
+    <id>https://ghyuav.netlify.app/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/</id>
+    <published>2023-01-16T01:24:29.000Z</published>
+    <updated>2023-01-16T01:56:54.730Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="访问谷歌全家桶？"><a href="#访问谷歌全家桶？" class="headerlink" title="访问谷歌全家桶？"></a>访问谷歌全家桶？</h2><h3 id="为什么不能访问谷歌？"><a href="#为什么不能访问谷歌？" class="headerlink" title="为什么不能访问谷歌？"></a>为什么不能访问谷歌？</h3><blockquote><p>2010年3月23日3时3分，谷歌高级副总裁、首席法律官大卫·德拉蒙德公开发表声明，宣布谷歌关闭在中国大陆市场搜索服务，并将搜索服务由中国内地转至香港。</p></blockquote><p>原来谷歌（中国）那么早就亡了……</p><p>还有一个原因：<br>墙。</p><h3 id="Clash-小猫"><a href="#Clash-小猫" class="headerlink" title="Clash (小猫)"></a>Clash (小猫)</h3><p>Clash官方github releases页在<a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">这里</a><br>安装后是这个样子的<br><img src="/img/20230116093904.png" alt="这是图片" title="Clash For Winodws"><br>打开Clash订阅地址，在<a href="https://clashnode.com/">这里</a>，并进入一个最新文章<br><img src="/img/2023011600.png" alt="这是图片" title="clashnode"><br>找到”订阅链接-clash订阅链接”，复制下来<br><img src="/img/2023011601.png" alt="这是图片" title="clashnode"><br>回到clash中，点击”配置-从url下载”，粘贴在这里，点击”下载”<br><img src="/img/2023011602.png" alt="这是图片" title="Clash For Winodws"><br>点击”代理-测速按钮”，双击选中一个延迟最低的节点（注意不要选择中国节点，否则无法访问谷歌）<br><img src="/img/2023011603.png" alt="这是图片" title="Clash For Winodws"><br>回到”主页”，打开系统代理<br><img src="/img/2023011604.png" alt="这是图片" title="Clash For Winodws"><br>这是最终效果<br><img src="/img/2023011605.png" alt="这是图片" title="Clash For Winodws"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;访问谷歌全家桶？&quot;&gt;&lt;a href=&quot;#访问谷歌全家桶？&quot; class=&quot;headerlink&quot; title=&quot;访问谷歌全家桶？&quot;&gt;&lt;/a&gt;访问谷歌全家桶？&lt;/h2&gt;&lt;h3 id=&quot;为什么不能访问谷歌？&quot;&gt;&lt;a href=&quot;#为什么不能访问谷歌？&quot; class=&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="网络" scheme="https://ghyuav.netlify.app/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="google" scheme="https://ghyuav.netlify.app/tags/google/"/>
+    
+  </entry>
   
   <entry>
     <title>Winodws UEFI引导修复</title>
@@ -45,7 +69,7 @@
     <link href="https://ghyuav.netlify.app/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"/>
     <id>https://ghyuav.netlify.app/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</id>
     <published>2023-01-11T23:48:04.000Z</published>
-    <updated>2023-01-14T00:26:50.354Z</updated>
+    <updated>2023-01-16T01:25:45.060Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hexo-fluid免费部署评论功能"><a href="#hexo-fluid免费部署评论功能" class="headerlink" title="hexo-fluid免费部署评论功能"></a>hexo-fluid免费部署评论功能</h2><h3 id="giscus"><a href="#giscus" class="headerlink" title="giscus"></a>giscus</h3><p>giscus是一个由 GitHub Discussions 驱动的评论系统，部署方便，无跟踪，无广告，永久免费。<br>无需数据库。全部数据均储存在 GitHub Discussions 中。</p><p>首先，要在你的github中安装<a href="https://github.com/apps/giscus">giscus app</a><br>点击”install”即可<br><img src="/img/202301120806.png" alt="这是图片" title="giscus app"></p><p>然后如图依次点击”Only select repositories”和”Select repositories”,并选择你存储评论的仓库。<br>点击”install”安装<br><img src="/img/202301120808.png" alt="这是图片" title="giscus"></p><p>打开<a href="https://giscus.app/">giscus官网</a>，进一步配置<br>找到 配置-仓库<br>填入仓库<br><img src="/img/20230112091604.png" alt="这是图片" title="配置-仓库"></p><p>如果提示”<font color='red'>无法在此仓库上使用 giscus。请确保以上条件均已满足。</font>“<br>你需要确保此仓库是公开的<br>Discussions功能已在你的仓库中启用。</p><p>启用Discussions功能的方法：<br>在你的仓库中点击”Settings”，找到”General-Features”,并启用”Discussions”<br><img src="/img/202301120931.png" alt="这是图片" title="启用 Discussions"></p><p>接下来回到<a href="https://giscus.app/">giscus官网</a>，填入仓库<br>当显示”<font color='green'>成功！此仓库满足所有条件。</font>“时，如图配置”页面 ↔️ discussion 映射关系”、”Discussion 分类”(“特性”、”主题”根据个人喜好配置)<br><img src="/img/202301120934.png" alt="这是图片" title="配置 页面 ↔️ discussion 映射关系、Discussion 分类"><br>最后在”启用 giscus”中将对应的</p><ul><li>repo</li><li>repo-id</li><li>category</li><li>category-id</li><li>mapping</li><li>input-position</li><li>lang</li></ul><p>分别填入_config.yml中giscus插件的必要参数<br>并在_config.yml中启用评论插件</p><p>最终效果如下<br><img src="/img/202301121025.png" alt="这是图片" title="最终效果"></p>]]></content>
     
@@ -117,7 +141,7 @@
     <link href="https://ghyuav.netlify.app/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>https://ghyuav.netlify.app/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
     <published>2023-01-10T05:39:02.000Z</published>
-    <updated>2023-01-14T00:32:57.888Z</updated>
+    <updated>2023-01-16T01:25:39.987Z</updated>
     
     <content type="html"><![CDATA[<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><h3 id="什么是内网穿透？"><a href="#什么是内网穿透？" class="headerlink" title="什么是内网穿透？"></a>什么是内网穿透？</h3><blockquote><p>内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。下面就相互通信的主机在网&gt;络中与 NAT 设备的相对位置介绍内网穿透方法。<br>UDP 内网穿透的实质是利用路由器上的NAT 系统。NAT 是一种将私有（保留）地址转化为合法IP地址的转换技术，它被广泛应用于各种类型 Internet 接入方式和各种类型&gt;的网络中。NAT可以完成重用地址，并且对于内部的网络结构可以实现对外隐蔽。<br>(摘自百度)</p></blockquote><p>说白了就是可以从远程服务器访问你的电脑。</p><h3 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h3><p>这里我推荐一个内网穿透软件，免费稳定。<br><img src="/img/20230110134703.png" alt="这是图片" title="sakura frp官网"><br><a href="https://www.natfrp.com/">sakura frp</a><br>这里用Terraria服务器作为演示（不仅可以用作游戏服务器，网站、远程桌面也可以）</p><p>首先你需要注册一个樱花穿透的账号，这里不多做演示，但是注册后需要实名认证，api要<strong>花费一元钱</strong><br>接下来下载樱花穿透的<a href="https://www.natfrp.com/tunnel/download">客户端启动器</a><br><img src="/img/20230110135615.png" alt="这是图片" title="下载安装后是这个样子的"><br>然后在樱花穿透网页的首页中点击<strong>查看访问密钥</strong>，并把访问密钥复制到启动器中登录<br>接下来在启动器中添加隧道，填入本地ip（127.0.0.1）、Terraria服务器的端口（默认为7777）、隧道名称及描述和穿透节点即可。<br>恭喜，到这里你就完成了，远程ip与端口可以在启动器-日志中看见。</p><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><p>最后把樱花穿透的帮助文档放在这里<a href="https://doc.natfrp.com/">文档入口</a><br>遇到问题可以在那里找到答案。</p>]]></content>
     
@@ -133,6 +157,8 @@
     <category term="服务器" scheme="https://ghyuav.netlify.app/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     <category term="Terraria" scheme="https://ghyuav.netlify.app/tags/Terraria/"/>
+    
+    <category term="网络" scheme="https://ghyuav.netlify.app/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   

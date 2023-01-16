@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>访问谷歌全家桶？</title>
+    <link href="/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/"/>
+    <url>/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="访问谷歌全家桶？"><a href="#访问谷歌全家桶？" class="headerlink" title="访问谷歌全家桶？"></a>访问谷歌全家桶？</h2><h3 id="为什么不能访问谷歌？"><a href="#为什么不能访问谷歌？" class="headerlink" title="为什么不能访问谷歌？"></a>为什么不能访问谷歌？</h3><blockquote><p>2010年3月23日3时3分，谷歌高级副总裁、首席法律官大卫·德拉蒙德公开发表声明，宣布谷歌关闭在中国大陆市场搜索服务，并将搜索服务由中国内地转至香港。</p></blockquote><p>原来谷歌（中国）那么早就亡了……</p><p>还有一个原因：<br>墙。</p><h3 id="Clash-小猫"><a href="#Clash-小猫" class="headerlink" title="Clash (小猫)"></a>Clash (小猫)</h3><p>Clash官方github releases页在<a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">这里</a><br>安装后是这个样子的<br><img src="/img/20230116093904.png" alt="这是图片" title="Clash For Winodws"><br>打开Clash订阅地址，在<a href="https://clashnode.com/">这里</a>，并进入一个最新文章<br><img src="/img/2023011600.png" alt="这是图片" title="clashnode"><br>找到”订阅链接-clash订阅链接”，复制下来<br><img src="/img/2023011601.png" alt="这是图片" title="clashnode"><br>回到clash中，点击”配置-从url下载”，粘贴在这里，点击”下载”<br><img src="/img/2023011602.png" alt="这是图片" title="Clash For Winodws"><br>点击”代理-测速按钮”，双击选中一个延迟最低的节点（注意不要选择中国节点，否则无法访问谷歌）<br><img src="/img/2023011603.png" alt="这是图片" title="Clash For Winodws"><br>回到”主页”，打开系统代理<br><img src="/img/2023011604.png" alt="这是图片" title="Clash For Winodws"><br>这是最终效果<br><img src="/img/2023011605.png" alt="这是图片" title="Clash For Winodws"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络</tag>
+      
+      <tag>google</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Winodws UEFI引导修复</title>
     <link href="/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/"/>
     <url>/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/</url>
@@ -101,6 +122,8 @@
       <tag>服务器</tag>
       
       <tag>Terraria</tag>
+      
+      <tag>网络</tag>
       
     </tags>
     
