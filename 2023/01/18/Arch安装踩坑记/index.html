@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#3E5D8B">
+  <meta name="author" content="Ghyuav">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Arch安装踩坑记哇，网上的教程真是让我大开眼界啊，有好多错误，坑一个比一个多，我也一个接一个踩。花了两天，整整两天啊(x_x)最后终于整理出了一个完美无瑕至少在我的电脑上可以使用的教程。注意，本教程仅适用于使用UEFI启动、插网线的机器 安装前必读！！！             ！！安装前必读！！如果你不懂”&#x2F;dev&#x2F;sda1”代表着什么，我劝你不要读这篇文章，更不要照着这篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arch安装踩坑记">
+<meta property="og:url" content="https://ghyuav.netlify.app/2023/01/18/Arch%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Ghyuav的博客">
+<meta property="og:description" content="Arch安装踩坑记哇，网上的教程真是让我大开眼界啊，有好多错误，坑一个比一个多，我也一个接一个踩。花了两天，整整两天啊(x_x)最后终于整理出了一个完美无瑕至少在我的电脑上可以使用的教程。注意，本教程仅适用于使用UEFI启动、插网线的机器 安装前必读！！！             ！！安装前必读！！如果你不懂”&#x2F;dev&#x2F;sda1”代表着什么，我劝你不要读这篇文章，更不要照着这篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ghyuav.netlify.app/img/20230119120405.png">
+<meta property="article:published_time" content="2023-01-18T10:27:19.000Z">
+<meta property="article:modified_time" content="2023-01-20T04:19:19.238Z">
+<meta property="article:author" content="Ghyuav">
+<meta property="article:tag" content="Arch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ghyuav.netlify.app/img/20230119120405.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Arch安装踩坑记 - Ghyuav的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont.css">
+<link rel="stylesheet" href="/css/rightkey.css">
+<link rel="stylesheet" href="/css/mouse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ghyuav.netlify.app","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Ghyuav的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ghyuav的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>时光机</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/20230119120405.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Arch安装踩坑记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-18 18:27" pubdate>
+          2023年1月18日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Arch安装踩坑记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Arch安装踩坑记"><a href="#Arch安装踩坑记" class="headerlink" title="Arch安装踩坑记"></a>Arch安装踩坑记</h2><p>哇，网上的教程真是让我大开眼界啊，有好多错误，坑一个比一个多，我也一个接一个踩。<br>花了两天，整整两天啊(x_x)<br>最后终于整理出了一个<del>完美无瑕</del>至少在我的电脑上可以使用的教程。<br>注意，<strong>本教程仅适用于使用UEFI启动、插网线的机器</strong></p>
+<h2 id="安装前必读！！！"><a href="#安装前必读！！！" class="headerlink" title="安装前必读！！！"></a>安装前必读！！！</h2><div class="note note-danger">
+            <p>！！安装前必读！！<br>如果你不懂”&#x2F;dev&#x2F;sda1”代表着什么，我劝你不要读这篇文章，更不要照着这篇文章在实体机上安装Arch。<br>下面有许多命令后面带括号（），这意味着这条命令有需要根据自己硬件情况修改的地方，不能直接往上用<br>如果你照着这篇文章在实体机上安装Arch操作失误导致数据丢失，与我无关。<br>别怪我没提醒你哦！</p>
+          </div>
+<h3 id="1-被跳过的步骤"><a href="#1-被跳过的步骤" class="headerlink" title="1.被跳过的步骤"></a>1.被跳过的步骤</h3><p>下载镜像、制作启动盘省略</p>
+<h3 id="2-live环境中的操作"><a href="#2-live环境中的操作" class="headerlink" title="2.live环境中的操作"></a>2.live环境中的操作</h3><h4 id="2-1同步时间（需联网）"><a href="#2-1同步时间（需联网）" class="headerlink" title="2.1同步时间（需联网）"></a>2.1同步时间（需联网）</h4><p>输入</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">timedatectl</span> <span class="hljs-built_in">set-ntp</span> <span class="hljs-string">true</span><br></code></pre></td></tr></table></figure>
+<h4 id="2-2修改软件源"><a href="#2-2修改软件源" class="headerlink" title="2.2修改软件源"></a>2.2修改软件源</h4><p>输入<br>找到”China”，并排在最前面</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>pacman.d/mirrorlist<br></code></pre></td></tr></table></figure>
+<p>这里不得不说一下vim的简单使用方法<br>命令模式下：<br>按下”i”键: 进入插入模式，可以输入文字（退出按 ESC）<br>按下”v”键: 键盘上下键，选中多行<br>按下”d”键: 剪切<br>按下”p”键: 粘贴<br>保存则需要在命令模式下按”:”（冒号），输入”wq”（w代表写入，q代表退出），按下”Enter”（回车）<br>就是依次按下”:wq 回车”</p>
+<h4 id="2-3磁盘分区"><a href="#2-3磁盘分区" class="headerlink" title="2.3磁盘分区"></a>2.3磁盘分区</h4><h5 id="多硬盘情况"><a href="#多硬盘情况" class="headerlink" title="多硬盘情况"></a>多硬盘情况</h5><p>查看硬盘情况<br>输入</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">fdisk -l</span><br></code></pre></td></tr></table></figure>
+<p>理论上会输出</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gradle">Disk <span class="hljs-regexp">/dev/</span>sda: <span class="hljs-number">60</span> GIB, <span class="hljs-number">64424509440</span> bytes, <span class="hljs-number">125829120</span> sectors<br>Disk model: 乱七八糟的<br>Units: 还是乱七八糟的<br>Sector <span class="hljs-keyword">size</span> -------------------------<br>I/O <span class="hljs-keyword">size</span> -------------------------<br><br>Disk <span class="hljs-regexp">/dev/</span>sdb: <span class="hljs-number">120</span> GIB, -------------- bytes, -------------- sectors<br>Disk model: 乱七八糟的<br>Units: 还是乱七八糟的<br>Sector <span class="hljs-keyword">size</span> -------------------------<br>I/O <span class="hljs-keyword">size</span> -------------------------<br></code></pre></td></tr></table></figure>
+<p>这样的东西，选择一个你将要安装Arch的硬盘，比如说 “&#x2F;dev&#x2F;sda”<br>然后输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cfdisk <span class="hljs-regexp">/dev/</span>sda （这里是刚才选的要安装Arch的硬盘）<br></code></pre></td></tr></table></figure>
+<p>出现了一个图形化(?)界面<br><img src="/img/20230118191701.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/20230118193153.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Partition</span> size: <span class="hljs-number">60</span>G<br></code></pre></td></tr></table></figure>
+<p>将”60G”改为”512M”，按下回车，就创建完了一个分区<br>再这样创建三个分区，四个分区的大小分配大概是这样的</p>
+<table>
+<thead>
+<tr>
+<th>分区</th>
+<th>分配大小</th>
+<th>作用</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分区一</td>
+<td>512M</td>
+<td>用作启动分区</td>
+<td>刚刚创建完，是启动分区</td>
+</tr>
+<tr>
+<td>分区二</td>
+<td>物理内存的 1~2 倍</td>
+<td>用作交换分区</td>
+<td>内存不足时把这个分区当内存用</td>
+</tr>
+<tr>
+<td>分区三</td>
+<td>自己看着来</td>
+<td>用作根目录</td>
+<td>所有的软件包都会装在这里</td>
+</tr>
+<tr>
+<td>分区四</td>
+<td>自己看着来</td>
+<td>用作&#x2F;home目录</td>
+<td>所有的个人文件都在这里</td>
+</tr>
+</tbody></table>
+<p>怎么退出？</p>
+<p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/20230118194944.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p>
+<p>好的，你可以”空降”到<a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>了</p>
+<h5 id="单硬盘情况"><a href="#单硬盘情况" class="headerlink" title="单硬盘情况"></a>单硬盘情况</h5><p>输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cfdisk <span class="hljs-regexp">/dev/</span>sda （这里是刚才选的要安装Arch的硬盘）<br></code></pre></td></tr></table></figure>
+<p>出现了一个图形化(?)界面<br><img src="/img/20230118191701.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/20230118193153.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Partition</span> size: <span class="hljs-number">60</span>G<br></code></pre></td></tr></table></figure>
+<p>将”60G”改为”512M”，按下回车，就创建完了一个分区<br>再这样创建三个分区，四个分区的大小分配大概是这样的</p>
+<table>
+<thead>
+<tr>
+<th>分区</th>
+<th>分配大小</th>
+<th>作用</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分区一</td>
+<td>512M</td>
+<td>用作启动分区</td>
+<td>刚刚创建完，是启动分区</td>
+</tr>
+<tr>
+<td>分区二</td>
+<td>物理内存的 1~2 倍</td>
+<td>用作交换分区</td>
+<td>内存不足时把这个分区当内存用</td>
+</tr>
+<tr>
+<td>分区三</td>
+<td>自己看着来</td>
+<td>用作根目录</td>
+<td>所有的软件包都会装在这里</td>
+</tr>
+<tr>
+<td>分区四</td>
+<td>自己看着来</td>
+<td>用作&#x2F;home目录</td>
+<td>所有的个人文件都在这里</td>
+</tr>
+</tbody></table>
+<p>怎么退出？</p>
+<p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/20230118194944.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p>
+<h4 id="2-4格式化"><a href="#2-4格式化" class="headerlink" title="2.4格式化"></a>2.4格式化</h4><p>输入</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">fdisk</span> -l （这是小写<span class="hljs-string">&quot;L&quot;</span>）<br></code></pre></td></tr></table></figure>
+<p>会输出<br><img src="/img/20230118195611.png" srcset="/img/loading.gif" lazyload alt="img" title="fdisk"></p>
+<p>对应着你自己的表格，<br>分别用</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkfs.fat -F32 <span class="hljs-regexp">/dev/</span>sda1 （sda1对应着启动分区）<br></code></pre></td></tr></table></figure>
+<p>格式化启动分区；</p>
+<p>用</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkswap <span class="hljs-regexp">/dev/</span>sda2 （sda2对应着交换分区）<br>swapon <span class="hljs-regexp">/dev/</span>sda2 （sda2对应着交换分区）<br></code></pre></td></tr></table></figure>
+<p>格式化并启用交换分区；</p>
+<p>用</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkfs.ext4 <span class="hljs-regexp">/dev/</span>sda3 （sda3对应着用作根目录的分区）<br>mkfs.ext4 <span class="hljs-regexp">/dev/</span>sda4 （sda4对应着用作/home目录的分区）<br></code></pre></td></tr></table></figure>
+<p>分别格式化用作根目录、用作&#x2F;home目录的分区。</p>
+<h4 id="2-5挂载目录"><a href="#2-5挂载目录" class="headerlink" title="2.5挂载目录"></a>2.5挂载目录</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">mount <span class="hljs-regexp">/dev/</span>sda3 /mnt （sda3对应着用作根目录的分区）<br>mkdir <span class="hljs-regexp">/mnt/</span>home<br>mkdir <span class="hljs-regexp">/mnt/</span>boot<br>mount <span class="hljs-regexp">/dev/</span>sda4 <span class="hljs-regexp">/mnt/</span>home （sda4对应着用作/home目录的分区）<br>mount <span class="hljs-regexp">/dev/</span>sda1 <span class="hljs-regexp">/mnt/</span>boot （sda1对应着启动分区）<br></code></pre></td></tr></table></figure>
+<p>不要变顺序！</p>
+<h4 id="2-6安装系统和基础软件"><a href="#2-6安装系统和基础软件" class="headerlink" title="2.6安装系统和基础软件"></a>2.6安装系统和基础软件</h4><p>啊啊啊，相信看到这里的你一定很有耐心呀！</p>
+<p>系统包括<br>base base-devel linux linux-firmware<br>基础软件包括<br>dhcpcd iwd vim sudo bash-completion nano net-tools openssh man git wget zsh fish</p>
+<p>输入</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">pacstrap /mnt <span class="hljs-keyword">base</span> <span class="hljs-keyword">base</span>-devel linux linux-firmware dhcpcd iwd vim sudo bash-completion nano net-tools openssh man git wget zsh fish<br></code></pre></td></tr></table></figure>
+<p>够它跑一会了，喝口水，上趟厕所吧。（欸，我还真上了厕所(。・ω・。)）</p>
+<h4 id="2-7生成fstab"><a href="#2-7生成fstab" class="headerlink" title="2.7生成fstab"></a>2.7生成fstab</h4><p>输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">genfstab -U <span class="hljs-regexp">/mnt &gt;&gt; /m</span>nt<span class="hljs-regexp">/etc/</span>fstab<br></code></pre></td></tr></table></figure>
+<h3 id="3-装好系统后的操作"><a href="#3-装好系统后的操作" class="headerlink" title="3.装好系统后的操作"></a>3.装好系统后的操作</h3><h4 id="3-1进入系统"><a href="#3-1进入系统" class="headerlink" title="3.1进入系统"></a>3.1进入系统</h4><p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">arch-chroot /mnt<br></code></pre></td></tr></table></figure>
+<p>切换到刚安装的系统内</p>
+<h4 id="3-2配置网络"><a href="#3-2配置网络" class="headerlink" title="3.2配置网络"></a>3.2配置网络</h4><p>输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>hostname<br></code></pre></td></tr></table></figure>
+<p>取一个好听的hostname，填在里面</p>
+<p>编辑hosts<br>输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>hosts<br></code></pre></td></tr></table></figure>
+<p>添加</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">127.0.0.1</span>   localhost<br>::<span class="hljs-number">1</span>         localhost<br><span class="hljs-number">127.0.1.1</span>   ghyuav     （刚刚取完的一个好听的hostname，我取的是<span class="hljs-string">&quot;ghyuav&quot;</span>）<br></code></pre></td></tr></table></figure>
+<p>vim用法上面已经提到过了，还不明白可以上网搜或者用”nano”(反正我刚才留了一手，安装基础软件时安装了”nano”)</p>
+<h4 id="3-3本地化"><a href="#3-3本地化" class="headerlink" title="3.3本地化"></a>3.3本地化</h4><h5 id="3-3-1设置时区、硬件时间"><a href="#3-3-1设置时区、硬件时间" class="headerlink" title="3.3.1设置时区、硬件时间"></a>3.3.1设置时区、硬件时间</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">ln -sf <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/zoneinfo/</span>Asia<span class="hljs-regexp">/Shanghai /</span>etc/localtime<br>hwclock --systohc<br></code></pre></td></tr></table></figure>
+<h5 id="3-3-2设置语言"><a href="#3-3-2设置语言" class="headerlink" title="3.3.2设置语言"></a>3.3.2设置语言</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>locale.gen<br></code></pre></td></tr></table></figure>
+<p>分别把<br>#en_US.UTF-8.UTF-8<br>#zh_CN.UTF-8.UTF-8<br>前面的”#”去掉<br>然后保存并退出</p>
+<p>使语言环境生效</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">locale-gen<br>echo <span class="hljs-string">&#x27;LANG=en_US.UTF-8&#x27;</span> &gt; <span class="hljs-regexp">/etc/</span>locale.conf<br></code></pre></td></tr></table></figure>
+<p><strong>千万不要耍小聪明，既然有en_US，那我换成zh-CN不就有中文了吗？</strong><br><strong>那么做的结果只会使中文变成小方块</strong></p>
+<h4 id="3-4设置镜像源"><a href="#3-4设置镜像源" class="headerlink" title="3.4设置镜像源"></a>3.4设置镜像源</h4><p>输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>pacman.conf<br></code></pre></td></tr></table></figure>
+<p>然后删掉[multilib]这几行前的”#”，在末尾添加以下两行：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">[archlinuxcn]<br>Server = https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/archlinuxcn/</span><span class="hljs-variable">$arch</span><br></code></pre></td></tr></table></figure>
+<p>保存并退出</p>
+<h4 id="3-5设置用户"><a href="#3-5设置用户" class="headerlink" title="3.5设置用户"></a>3.5设置用户</h4><h5 id="3-5-1设置管理员密码"><a href="#3-5-1设置管理员密码" class="headerlink" title="3.5.1设置管理员密码"></a>3.5.1设置管理员密码</h5><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">passwd root</span><br></code></pre></td></tr></table></figure>
+<p>输入两遍密码，不会有显示</p>
+<h5 id="3-5-2添加新用户"><a href="#3-5-2添加新用户" class="headerlink" title="3.5.2添加新用户"></a>3.5.2添加新用户</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">useradd -m -G wheel -s <span class="hljs-regexp">/bin/</span>bash ghyuav （<span class="hljs-string">&quot;ghyuav&quot;</span>可改成其他名字）<br></code></pre></td></tr></table></figure>
+<p>设置密码</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">passwd</span> ghyuav （<span class="hljs-string">&quot;ghyuav&quot;</span>是刚才添加的用户名）<br></code></pre></td></tr></table></figure>
+<h5 id="3-5-3编辑权限"><a href="#3-5-3编辑权限" class="headerlink" title="3.5.3编辑权限"></a>3.5.3编辑权限</h5><p>编辑ghyuav用户的权限</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">EDITOR</span><span class="hljs-operator">=</span>vim visudo<br></code></pre></td></tr></table></figure>
+<p>找到”# %wheel ALL&#x3D;(ALL:ALL)ALL”<br>删除前面的”# “</p>
+<h4 id="3-6安装cpu解码软件和GRUB"><a href="#3-6安装cpu解码软件和GRUB" class="headerlink" title="3.6安装cpu解码软件和GRUB"></a>3.6安装cpu解码软件和GRUB</h4><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">pacman -Sy intel-ucode grub efibootmgr <span class="hljs-built_in">os</span>-prober （这里是intel的cpu，如果是amd的，请把<span class="hljs-string">&quot;intel-ucode&quot;</span>替换为<span class="hljs-string">&quot;amd-ucode&quot;</span>）<br></code></pre></td></tr></table></figure>
+<p>安装grub</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">grub-install <span class="hljs-attribute">--target</span>=x86_64-efi <span class="hljs-attribute">--efi-directory</span>=/boot <span class="hljs-attribute">--bootloader-id</span>=GRUB<br></code></pre></td></tr></table></figure>
+<p>生成grub</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">grub-mkconfig -o <span class="hljs-regexp">/boot/g</span>rub/grub.cfg<br></code></pre></td></tr></table></figure>
+<h4 id="3-7安装一堆软件、字体，设置开机启动"><a href="#3-7安装一堆软件、字体，设置开机启动" class="headerlink" title="3.7安装一堆软件、字体，设置开机启动"></a>3.7安装一堆软件、字体，设置开机启动</h4><p>vmware可以装</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">pacman -S gtkmm gtk2 gtkmm3 <span class="hljs-keyword">open</span>-<span class="hljs-keyword">vm</span>-tools xf86-<span class="hljs-built_in">input</span>-vmmouse xf86-video-vmware<br></code></pre></td></tr></table></figure>
+<p>安装一堆软件、字体，设置开机启动</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gauss">pacman -S plasma konsole dolphin （安装桌面、终端模拟器、文件管理器）<br>pacman -S ntfs<span class="hljs-number">-3</span>g （可以读取ntfs格式磁盘 实体机上推荐安装）<br>pacman -S os-prober （查找已安装的操作系统 实体机上推荐安装）<br>pacman -S adobe-source-han-serif-cn-<span class="hljs-built_in">fonts</span> adobe-source-han-sans-cn-<span class="hljs-built_in">fonts</span> wqy-zenhei wqy-microhei noto-<span class="hljs-built_in">fonts</span>-cjk noto-<span class="hljs-built_in">fonts</span>-emoji noto-<span class="hljs-built_in">fonts</span>-extra ttf-dejavu （安装各种字体）<br>pacman -S firefox ark gwenview packagekit-qt5 packagekit appstream-qt appstream man neofetch net-tools networkmanager openssh git wget（安装常用软件）<br>systemctl <span class="hljs-keyword">enable</span> NetworkManager sddm vmtoolsd sshd （启动系统服务）<br></code></pre></td></tr></table></figure>
+<div class="note note-warning">
+            <p>仅适用于VMware虚拟机的操作</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo vim <span class="hljs-regexp">/etc/m</span>kinitcpio.conf<br></code></pre></td></tr></table></figure><p>添加以下内容</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">MODULES</span><span class="hljs-operator">=</span>(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)<br></code></pre></td></tr></table></figure><p>保存并退出</p>
+          </div>
+<p>生效配置文件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">mkinitcpio -<span class="hljs-selector-tag">p</span> linux<br></code></pre></td></tr></table></figure>
+<p>输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
+<p>回到live环境，<br>卸载本机的&#x2F;mnt目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">umount -R /mnt<br></code></pre></td></tr></table></figure>
+<p>最后reboot重启</p>
+<h3 id="大功告成！！"><a href="#大功告成！！" class="headerlink" title="大功告成！！"></a>大功告成！！</h3><p>大功告成<br>最终效果放出来：<br><img src="/img/20230119120405.png" srcset="/img/loading.gif" lazyload alt="img" title="arch"></p>
+<p>我去，不知不觉写这么多，花了两天半，踩各种坑，虚拟机安一遍，实体机安一遍，可算是整完了</p>
+<p>待完善……</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Arch/">#Arch</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Arch安装踩坑记</div>
+      <div>https://ghyuav.netlify.app/2023/01/18/Arch安装踩坑记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ghyuav</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/22/%E5%86%9C%E5%8E%86%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81/" title="农历新年快乐！">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">农历新年快乐！</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/16/%E7%AE%80%E6%98%93git%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" title="简易git配置教程">
+                        <span class="hidden-mobile">简易git配置教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UC2kp8litj9KSQlotDOWUIyi-MdYXbMMI","appKey":"iVn5qRFV9ZRAetC9Yr3tGrfy","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<p>Copyright © 2023  <br> Powered By  <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> <span>Hexo</span> </a> &  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <br> <img src="/img/meng_icp.png" srcset="/img/loading.gif" lazyload alt="萌ICP" width="25px" height="25px"> <a href="https://icp.gov.moe/?keyword=20230055" target="_blank">萌ICP备20230055号</a> ·  <img src="/img/netlify.png" srcset="/img/loading.gif" lazyload alt="netlify" width="25px" height="25px"> <a href="https://app.netlify.com/" target="_blank">Netlify提供加速服务</a> </p> <meta charset="utf-8"> <div class="deng-box2"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">年</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"> </div> <div class="shui-b"></div> </div> </div> </div> <div class="deng-box3"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">新</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"></div> <div class="shui-b"> </div> </div> </div> </div> <div class="deng-box1"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">乐</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"></div> <div class="shui-b"></div> </div> </div> </div> <div class="deng-box"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">快</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"> </div> <div class="shui-b"></div> </div> </div> </div> <style type="text/css"> .deng-box { position: fixed; top: -40px; right: 150px; z-index: 9999; pointer-events: none; } .deng-box1 { position: fixed; top: -30px; right: 10px; z-index: 9999; pointer-events: none } .deng-box2 { position: fixed; top: -40px; left: 150px; z-index: 9999; pointer-events: none } .deng-box3 { position: fixed; top: -30px; left: 10px; z-index: 9999; pointer-events: none } .deng-box1 .deng, .deng-box3 .deng { position: relative; width: 120px; height: 90px; margin: 50px; background: #d8000f; background: rgba(216, 0, 15, .8); border-radius: 50% 50%; -webkit-transform-origin: 50% -100px; -webkit-animation: swing 5s infinite ease-in-out; box-shadow: -5px 5px 30px 4px #fc903d } .deng { position: relative; width: 120px; height: 90px; margin: 50px; background: #d8000f; background: rgba(216, 0, 15, .8); border-radius: 50% 50%; -webkit-transform-origin: 50% -100px; -webkit-animation: swing 3s infinite ease-in-out; box-shadow: -5px 5px 50px 4px #fa6c00 } .deng-a { width: 100px; height: 90px; background: #d8000f; background: rgba(216, 0, 15, .1); margin: 12px 8px 8px 8px; border-radius: 50% 50%; border: 2px solid #dc8f03 } .deng-b { width: 45px; height: 90px; background: #d8000f; background: rgba(216, 0, 15, .1); margin: -4px 8px 8px 26px; border-radius: 50% 50%; border: 2px solid #dc8f03 } .xian { position: absolute; top: -20px; left: 60px; width: 2px; height: 20px; background: #dc8f03 } .shui-a { position: relative; width: 5px; height: 20px; margin: -5px 0 0 59px; -webkit-animation: swing 4s infinite ease-in-out; -webkit-transform-origin: 50% -45px; background: orange; border-radius: 0 0 5px 5px } .shui-b { position: absolute; top: 14px; left: -2px; width: 10px; height: 10px; background: #dc8f03; border-radius: 50% } .shui-c { position: absolute; top: 18px; left: -2px; width: 10px; height: 35px; background: orange; border-radius: 0 0 0 5px } .deng:before { position: absolute; top: -7px; left: 29px; height: 12px; width: 60px; content: " "; display: block; z-index: 999; border-radius: 5px 5px 0 0; border: solid 1px #dc8f03; background: orange; background: linear-gradient(to right, #dc8f03, orange, #dc8f03, orange, #dc8f03) } .deng:after { position: absolute; bottom: -7px; left: 10px; height: 12px; width: 60px; content: " "; display: block; margin-left: 20px; border-radius: 0 0 5px 5px; border: solid 1px #dc8f03; background: orange; background: linear-gradient(to right, #dc8f03, orange, #dc8f03, orange, #dc8f03) } .deng-t { font-family: 黑体, Arial, Lucida Grande, Tahoma, sans-serif; font-size: 3.2rem; color: #dc8f03; font-weight: 700; line-height: 85px; text-align: center } .night .deng-box, .night .deng-box1, .night .deng-t { background: 0 0 !important } @-moz-keyframes swing { 0% { -moz-transform: rotate(-10deg) } 50% { -moz-transform: rotate(10deg) } 100% { -moz-transform: rotate(-10deg) } } @-webkit-keyframes swing { 0% { -webkit-transform: rotate(-10deg) } 50% { -webkit-transform: rotate(10deg) } 100% { -webkit-transform: rotate(-10deg) } } </style>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <!-- <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+   -->
+
+</div>
+
+  
+  
+  <div class="usercm" style="display: none;">
+    <ul>
+      <li><a href="javascript:history.go(-1);"><i class="fa fa-arrow-left fa-fw"></i><span>返回</span></a></li>
+      <li><a href="javascript:history.go(1);"><i class="fa fa-arrow-right fa-fw"></i><span>前进</span></a></li>
+      <li style="border-bottom:1px solid gray"><a href="javascript:void(0);" onclick="toRefresh()"><i class="fa fa-refresh fa-fw"></i><span>刷新</span></a></li>
+      <li style="border-bottom:1px solid gray"><a href="javascript:void(0);" onclick="getSelect();"><i class="fa fa-file fa-fw"></i><span>复制</span></a></li>
+      <li><a href="javascript:location.href='/';"><i class="fa fa-home fa-fw"></i><span>首页</span></a></li>
+      <li><a href="javascript:location.href='/links';"><i class="fa fa-user fa-fw"></i><span>友情链接</span></a></li>
+      <li><a href="javascript:location.href='/about';"><i class="fa fa-info-circle fa-fw"></i><span>关于我</span></a></li>
+    </ul>
+  </div>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/rightkey.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

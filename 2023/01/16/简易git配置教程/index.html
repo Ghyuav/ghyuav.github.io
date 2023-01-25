@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#3E5D8B">
+  <meta name="author" content="Ghyuav">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="git配置过程简易的git配置教程 下载git官网就不指望了，我曾经试了一下，用浏览器下载了一整天都没下载完（其实就刚开始几分钟有速度，到后来就变成0B&#x2F;s了）直接用镜像吧：Git下载链接安装过程一路确认就行详细安装方法可以参考这篇文章 设置用户名、邮箱打开 Git Bash输入 12git config --global user.name Ghyuav    (github用户名)g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简易git配置教程">
+<meta property="og:url" content="https://ghyuav.netlify.app/2023/01/16/%E7%AE%80%E6%98%93git%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Ghyuav的博客">
+<meta property="og:description" content="git配置过程简易的git配置教程 下载git官网就不指望了，我曾经试了一下，用浏览器下载了一整天都没下载完（其实就刚开始几分钟有速度，到后来就变成0B&#x2F;s了）直接用镜像吧：Git下载链接安装过程一路确认就行详细安装方法可以参考这篇文章 设置用户名、邮箱打开 Git Bash输入 12git config --global user.name Ghyuav    (github用户名)g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ghyuav.netlify.app/img/2023011606.jpg">
+<meta property="article:published_time" content="2023-01-16T04:26:07.000Z">
+<meta property="article:modified_time" content="2023-01-20T03:51:57.512Z">
+<meta property="article:author" content="Ghyuav">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ghyuav.netlify.app/img/2023011606.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>简易git配置教程 - Ghyuav的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont.css">
+<link rel="stylesheet" href="/css/rightkey.css">
+<link rel="stylesheet" href="/css/mouse.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ghyuav.netlify.app","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Ghyuav的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ghyuav的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>时光机</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="简易git配置教程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-16 12:26" pubdate>
+          2023年1月16日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          897 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">简易git配置教程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="git配置过程"><a href="#git配置过程" class="headerlink" title="git配置过程"></a>git配置过程</h2><p>简易的git配置教程</p>
+<h3 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h3><p><img src="/img/2023011606.jpg" srcset="/img/loading.gif" lazyload alt="这是图片" title="git"><br>官网就不指望了，我曾经试了一下，用浏览器下载了一整天都没下载完（其实就刚开始几分钟有速度，到后来就变成0B&#x2F;s了）<br>直接用镜像吧：<a target="_blank" rel="noopener" href="https://mirror.tuna.tsinghua.edu.cn/github-release/git-for-windows/git/LatestRelease/">Git下载链接</a><br>安装过程一路确认就行<br>详细安装方法可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/mukes/article/details/115693833">这篇文章</a></p>
+<h3 id="设置用户名、邮箱"><a href="#设置用户名、邮箱" class="headerlink" title="设置用户名、邮箱"></a>设置用户名、邮箱</h3><p>打开 Git Bash<br>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name Ghyuav    (github用户名)<br>git config --global user.email ghyuav2021@163.com    (github绑定的邮箱)<br></code></pre></td></tr></table></figure>
+<h3 id="设置ssh"><a href="#设置ssh" class="headerlink" title="设置ssh"></a>设置ssh</h3><p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&#x27;ghyuav2021@163.com&#x27;</span>    (github绑定的邮箱)<br></code></pre></td></tr></table></figure>
+<p>无脑按三下Enter键。<br>当出现</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">+---[RSA 3072]----+<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">*乱七八糟的东西   </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>+----[SHA256]-----+<br></code></pre></td></tr></table></figure>
+<p>时，<br>在你的用户文件夹下 找到&#x2F;.ssh目录，打开”id_rsa.pub”并复制里面的所有内容<br>打开你github的个人设置，点击侧边栏中的”SSH and GPG keys”，在右边的”SSH keys”中点击”New SSH key”，把刚刚的公钥粘贴进来，然后点击”Add SSH key”添加公钥。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在本地目录下打开Git Bash，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure>
+<h3 id="选择现有远程仓库"><a href="#选择现有远程仓库" class="headerlink" title="选择现有远程仓库"></a>选择现有远程仓库</h3><p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote set-url origin https://github.com/Ghyuav/ghyuav.github.io.git    (你的远程仓库地址)<br></code></pre></td></tr></table></figure>
+<h3 id="完成……了吗？"><a href="#完成……了吗？" class="headerlink" title="完成……了吗？"></a>完成……了吗？</h3><p>push时出现了一个奇怪错误：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">fatal: <span class="hljs-title">unable</span> <span class="hljs-title">to</span> <span class="hljs-title">access</span> &#x27;<span class="hljs-title">https</span>://<span class="hljs-title">github.com</span>/<span class="hljs-title">Ghyuav</span>/<span class="hljs-title">ghyuav.github.io.git</span>/&#x27;: <span class="hljs-title">SSL</span> <span class="hljs-title">certificate</span> <span class="hljs-title">problem</span>: <span class="hljs-title">unable</span> <span class="hljs-title">to</span> <span class="hljs-title">get</span> <span class="hljs-title">local</span> <span class="hljs-title">issuer</span> <span class="hljs-title">certificate</span></span><br></code></pre></td></tr></table></figure>
+<p>解决：<br>需要解除SSL验证，再重新执行克隆或者其他操作。<br>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>立刻见效。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/git/">#git</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>简易git配置教程</div>
+      <div>https://ghyuav.netlify.app/2023/01/16/简易git配置教程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ghyuav</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/18/Arch%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E8%AE%B0/" title="Arch安装踩坑记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Arch安装踩坑记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/" title="访问谷歌全家桶？">
+                        <span class="hidden-mobile">访问谷歌全家桶？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UC2kp8litj9KSQlotDOWUIyi-MdYXbMMI","appKey":"iVn5qRFV9ZRAetC9Yr3tGrfy","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<p>Copyright © 2023  <br> Powered By  <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> <span>Hexo</span> </a> &  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <br> <img src="/img/meng_icp.png" srcset="/img/loading.gif" lazyload alt="萌ICP" width="25px" height="25px"> <a href="https://icp.gov.moe/?keyword=20230055" target="_blank">萌ICP备20230055号</a> ·  <img src="/img/netlify.png" srcset="/img/loading.gif" lazyload alt="netlify" width="25px" height="25px"> <a href="https://app.netlify.com/" target="_blank">Netlify提供加速服务</a> </p> <meta charset="utf-8"> <div class="deng-box2"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">年</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"> </div> <div class="shui-b"></div> </div> </div> </div> <div class="deng-box3"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">新</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"></div> <div class="shui-b"> </div> </div> </div> </div> <div class="deng-box1"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">乐</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"></div> <div class="shui-b"></div> </div> </div> </div> <div class="deng-box"> <div class="deng"> <div class="xian"> </div> <div class="deng-a"> <div class="deng-b"> <div class="deng-t">快</div> </div> </div> <div class="shui shui-a"> <div class="shui-c"> </div> <div class="shui-b"></div> </div> </div> </div> <style type="text/css"> .deng-box { position: fixed; top: -40px; right: 150px; z-index: 9999; pointer-events: none; } .deng-box1 { position: fixed; top: -30px; right: 10px; z-index: 9999; pointer-events: none } .deng-box2 { position: fixed; top: -40px; left: 150px; z-index: 9999; pointer-events: none } .deng-box3 { position: fixed; top: -30px; left: 10px; z-index: 9999; pointer-events: none } .deng-box1 .deng, .deng-box3 .deng { position: relative; width: 120px; height: 90px; margin: 50px; background: #d8000f; background: rgba(216, 0, 15, .8); border-radius: 50% 50%; -webkit-transform-origin: 50% -100px; -webkit-animation: swing 5s infinite ease-in-out; box-shadow: -5px 5px 30px 4px #fc903d } .deng { position: relative; width: 120px; height: 90px; margin: 50px; background: #d8000f; background: rgba(216, 0, 15, .8); border-radius: 50% 50%; -webkit-transform-origin: 50% -100px; -webkit-animation: swing 3s infinite ease-in-out; box-shadow: -5px 5px 50px 4px #fa6c00 } .deng-a { width: 100px; height: 90px; background: #d8000f; background: rgba(216, 0, 15, .1); margin: 12px 8px 8px 8px; border-radius: 50% 50%; border: 2px solid #dc8f03 } .deng-b { width: 45px; height: 90px; background: #d8000f; background: rgba(216, 0, 15, .1); margin: -4px 8px 8px 26px; border-radius: 50% 50%; border: 2px solid #dc8f03 } .xian { position: absolute; top: -20px; left: 60px; width: 2px; height: 20px; background: #dc8f03 } .shui-a { position: relative; width: 5px; height: 20px; margin: -5px 0 0 59px; -webkit-animation: swing 4s infinite ease-in-out; -webkit-transform-origin: 50% -45px; background: orange; border-radius: 0 0 5px 5px } .shui-b { position: absolute; top: 14px; left: -2px; width: 10px; height: 10px; background: #dc8f03; border-radius: 50% } .shui-c { position: absolute; top: 18px; left: -2px; width: 10px; height: 35px; background: orange; border-radius: 0 0 0 5px } .deng:before { position: absolute; top: -7px; left: 29px; height: 12px; width: 60px; content: " "; display: block; z-index: 999; border-radius: 5px 5px 0 0; border: solid 1px #dc8f03; background: orange; background: linear-gradient(to right, #dc8f03, orange, #dc8f03, orange, #dc8f03) } .deng:after { position: absolute; bottom: -7px; left: 10px; height: 12px; width: 60px; content: " "; display: block; margin-left: 20px; border-radius: 0 0 5px 5px; border: solid 1px #dc8f03; background: orange; background: linear-gradient(to right, #dc8f03, orange, #dc8f03, orange, #dc8f03) } .deng-t { font-family: 黑体, Arial, Lucida Grande, Tahoma, sans-serif; font-size: 3.2rem; color: #dc8f03; font-weight: 700; line-height: 85px; text-align: center } .night .deng-box, .night .deng-box1, .night .deng-t { background: 0 0 !important } @-moz-keyframes swing { 0% { -moz-transform: rotate(-10deg) } 50% { -moz-transform: rotate(10deg) } 100% { -moz-transform: rotate(-10deg) } } @-webkit-keyframes swing { 0% { -webkit-transform: rotate(-10deg) } 50% { -webkit-transform: rotate(10deg) } 100% { -webkit-transform: rotate(-10deg) } } </style>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <!-- <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+   -->
+
+</div>
+
+  
+  
+  <div class="usercm" style="display: none;">
+    <ul>
+      <li><a href="javascript:history.go(-1);"><i class="fa fa-arrow-left fa-fw"></i><span>返回</span></a></li>
+      <li><a href="javascript:history.go(1);"><i class="fa fa-arrow-right fa-fw"></i><span>前进</span></a></li>
+      <li style="border-bottom:1px solid gray"><a href="javascript:void(0);" onclick="toRefresh()"><i class="fa fa-refresh fa-fw"></i><span>刷新</span></a></li>
+      <li style="border-bottom:1px solid gray"><a href="javascript:void(0);" onclick="getSelect();"><i class="fa fa-file fa-fw"></i><span>复制</span></a></li>
+      <li><a href="javascript:location.href='/';"><i class="fa fa-home fa-fw"></i><span>首页</span></a></li>
+      <li><a href="javascript:location.href='/links';"><i class="fa fa-user fa-fw"></i><span>友情链接</span></a></li>
+      <li><a href="javascript:location.href='/about';"><i class="fa fa-info-circle fa-fw"></i><span>关于我</span></a></li>
+    </ul>
+  </div>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/rightkey.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

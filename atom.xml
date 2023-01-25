@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ghyuav的博客</title>
+  
+  
+  <link href="https://ghyuav.netlify.app/atom.xml" rel="self"/>
+  
+  <link href="https://ghyuav.netlify.app/"/>
+  <updated>2023-01-21T16:04:16.134Z</updated>
+  <id>https://ghyuav.netlify.app/</id>
+  
+  <author>
+    <name>Ghyuav</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>农历新年快乐！</title>
+    <link href="https://ghyuav.netlify.app/2023/01/22/%E5%86%9C%E5%8E%86%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81/"/>
+    <id>https://ghyuav.netlify.app/2023/01/22/%E5%86%9C%E5%8E%86%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81/</id>
+    <published>2023-01-21T16:00:00.000Z</published>
+    <updated>2023-01-21T16:04:16.134Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="新年快乐！"><a href="#新年快乐！" class="headerlink" title="新年快乐！"></a>新年快乐！</h1><p>现在是2023年，1月22日，0点。<br>农历兔年来了，新的一年到来了！<br><del>我整整熬了一年啊，我要睡觉了！</del><br><img src="/img/20230122000155.png" alt="img"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;新年快乐！&quot;&gt;&lt;a href=&quot;#新年快乐！&quot; class=&quot;headerlink&quot; title=&quot;新年快乐！&quot;&gt;&lt;/a&gt;新年快乐！&lt;/h1&gt;&lt;p&gt;现在是2023年，1月22日，0点。&lt;br&gt;农历兔年来了，新的一年到来了！&lt;br&gt;&lt;del&gt;我整整熬了一年啊，我要睡</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Arch安装踩坑记</title>
+    <link href="https://ghyuav.netlify.app/2023/01/18/Arch%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
+    <id>https://ghyuav.netlify.app/2023/01/18/Arch%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E8%AE%B0/</id>
+    <published>2023-01-18T10:27:19.000Z</published>
+    <updated>2023-01-20T04:19:19.238Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Arch安装踩坑记"><a href="#Arch安装踩坑记" class="headerlink" title="Arch安装踩坑记"></a>Arch安装踩坑记</h2><p>哇，网上的教程真是让我大开眼界啊，有好多错误，坑一个比一个多，我也一个接一个踩。<br>花了两天，整整两天啊(x_x)<br>最后终于整理出了一个<del>完美无瑕</del>至少在我的电脑上可以使用的教程。<br>注意，<strong>本教程仅适用于使用UEFI启动、插网线的机器</strong></p><h2 id="安装前必读！！！"><a href="#安装前必读！！！" class="headerlink" title="安装前必读！！！"></a>安装前必读！！！</h2><div class="note note-danger">            <p>！！安装前必读！！<br>如果你不懂”&#x2F;dev&#x2F;sda1”代表着什么，我劝你不要读这篇文章，更不要照着这篇文章在实体机上安装Arch。<br>下面有许多命令后面带括号（），这意味着这条命令有需要根据自己硬件情况修改的地方，不能直接往上用<br>如果你照着这篇文章在实体机上安装Arch操作失误导致数据丢失，与我无关。<br>别怪我没提醒你哦！</p>          </div><h3 id="1-被跳过的步骤"><a href="#1-被跳过的步骤" class="headerlink" title="1.被跳过的步骤"></a>1.被跳过的步骤</h3><p>下载镜像、制作启动盘省略</p><h3 id="2-live环境中的操作"><a href="#2-live环境中的操作" class="headerlink" title="2.live环境中的操作"></a>2.live环境中的操作</h3><h4 id="2-1同步时间（需联网）"><a href="#2-1同步时间（需联网）" class="headerlink" title="2.1同步时间（需联网）"></a>2.1同步时间（需联网）</h4><p>输入</p><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">timedatectl</span> <span class="hljs-built_in">set-ntp</span> <span class="hljs-string">true</span><br></code></pre></td></tr></table></figure><h4 id="2-2修改软件源"><a href="#2-2修改软件源" class="headerlink" title="2.2修改软件源"></a>2.2修改软件源</h4><p>输入<br>找到”China”，并排在最前面</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>pacman.d/mirrorlist<br></code></pre></td></tr></table></figure><p>这里不得不说一下vim的简单使用方法<br>命令模式下：<br>按下”i”键: 进入插入模式，可以输入文字（退出按 ESC）<br>按下”v”键: 键盘上下键，选中多行<br>按下”d”键: 剪切<br>按下”p”键: 粘贴<br>保存则需要在命令模式下按”:”（冒号），输入”wq”（w代表写入，q代表退出），按下”Enter”（回车）<br>就是依次按下”:wq 回车”</p><h4 id="2-3磁盘分区"><a href="#2-3磁盘分区" class="headerlink" title="2.3磁盘分区"></a>2.3磁盘分区</h4><h5 id="多硬盘情况"><a href="#多硬盘情况" class="headerlink" title="多硬盘情况"></a>多硬盘情况</h5><p>查看硬盘情况<br>输入</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">fdisk -l</span><br></code></pre></td></tr></table></figure><p>理论上会输出</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gradle">Disk <span class="hljs-regexp">/dev/</span>sda: <span class="hljs-number">60</span> GIB, <span class="hljs-number">64424509440</span> bytes, <span class="hljs-number">125829120</span> sectors<br>Disk model: 乱七八糟的<br>Units: 还是乱七八糟的<br>Sector <span class="hljs-keyword">size</span> -------------------------<br>I/O <span class="hljs-keyword">size</span> -------------------------<br><br>Disk <span class="hljs-regexp">/dev/</span>sdb: <span class="hljs-number">120</span> GIB, -------------- bytes, -------------- sectors<br>Disk model: 乱七八糟的<br>Units: 还是乱七八糟的<br>Sector <span class="hljs-keyword">size</span> -------------------------<br>I/O <span class="hljs-keyword">size</span> -------------------------<br></code></pre></td></tr></table></figure><p>这样的东西，选择一个你将要安装Arch的硬盘，比如说 “&#x2F;dev&#x2F;sda”<br>然后输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cfdisk <span class="hljs-regexp">/dev/</span>sda （这里是刚才选的要安装Arch的硬盘）<br></code></pre></td></tr></table></figure><p>出现了一个图形化(?)界面<br><img src="/img/20230118191701.png" alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/20230118193153.png" alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Partition</span> size: <span class="hljs-number">60</span>G<br></code></pre></td></tr></table></figure><p>将”60G”改为”512M”，按下回车，就创建完了一个分区<br>再这样创建三个分区，四个分区的大小分配大概是这样的</p><table><thead><tr><th>分区</th><th>分配大小</th><th>作用</th><th>介绍</th></tr></thead><tbody><tr><td>分区一</td><td>512M</td><td>用作启动分区</td><td>刚刚创建完，是启动分区</td></tr><tr><td>分区二</td><td>物理内存的 1~2 倍</td><td>用作交换分区</td><td>内存不足时把这个分区当内存用</td></tr><tr><td>分区三</td><td>自己看着来</td><td>用作根目录</td><td>所有的软件包都会装在这里</td></tr><tr><td>分区四</td><td>自己看着来</td><td>用作&#x2F;home目录</td><td>所有的个人文件都在这里</td></tr></tbody></table><p>怎么退出？</p><p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/20230118194944.png" alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p><p>好的，你可以”空降”到<a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>了</p><h5 id="单硬盘情况"><a href="#单硬盘情况" class="headerlink" title="单硬盘情况"></a>单硬盘情况</h5><p>输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cfdisk <span class="hljs-regexp">/dev/</span>sda （这里是刚才选的要安装Arch的硬盘）<br></code></pre></td></tr></table></figure><p>出现了一个图形化(?)界面<br><img src="/img/20230118191701.png" alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/20230118193153.png" alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Partition</span> size: <span class="hljs-number">60</span>G<br></code></pre></td></tr></table></figure><p>将”60G”改为”512M”，按下回车，就创建完了一个分区<br>再这样创建三个分区，四个分区的大小分配大概是这样的</p><table><thead><tr><th>分区</th><th>分配大小</th><th>作用</th><th>介绍</th></tr></thead><tbody><tr><td>分区一</td><td>512M</td><td>用作启动分区</td><td>刚刚创建完，是启动分区</td></tr><tr><td>分区二</td><td>物理内存的 1~2 倍</td><td>用作交换分区</td><td>内存不足时把这个分区当内存用</td></tr><tr><td>分区三</td><td>自己看着来</td><td>用作根目录</td><td>所有的软件包都会装在这里</td></tr><tr><td>分区四</td><td>自己看着来</td><td>用作&#x2F;home目录</td><td>所有的个人文件都在这里</td></tr></tbody></table><p>怎么退出？</p><p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/20230118194944.png" alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p><h4 id="2-4格式化"><a href="#2-4格式化" class="headerlink" title="2.4格式化"></a>2.4格式化</h4><p>输入</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">fdisk</span> -l （这是小写<span class="hljs-string">&quot;L&quot;</span>）<br></code></pre></td></tr></table></figure><p>会输出<br><img src="/img/20230118195611.png" alt="img" title="fdisk"></p><p>对应着你自己的表格，<br>分别用</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkfs.fat -F32 <span class="hljs-regexp">/dev/</span>sda1 （sda1对应着启动分区）<br></code></pre></td></tr></table></figure><p>格式化启动分区；</p><p>用</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkswap <span class="hljs-regexp">/dev/</span>sda2 （sda2对应着交换分区）<br>swapon <span class="hljs-regexp">/dev/</span>sda2 （sda2对应着交换分区）<br></code></pre></td></tr></table></figure><p>格式化并启用交换分区；</p><p>用</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkfs.ext4 <span class="hljs-regexp">/dev/</span>sda3 （sda3对应着用作根目录的分区）<br>mkfs.ext4 <span class="hljs-regexp">/dev/</span>sda4 （sda4对应着用作/home目录的分区）<br></code></pre></td></tr></table></figure><p>分别格式化用作根目录、用作&#x2F;home目录的分区。</p><h4 id="2-5挂载目录"><a href="#2-5挂载目录" class="headerlink" title="2.5挂载目录"></a>2.5挂载目录</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">mount <span class="hljs-regexp">/dev/</span>sda3 /mnt （sda3对应着用作根目录的分区）<br>mkdir <span class="hljs-regexp">/mnt/</span>home<br>mkdir <span class="hljs-regexp">/mnt/</span>boot<br>mount <span class="hljs-regexp">/dev/</span>sda4 <span class="hljs-regexp">/mnt/</span>home （sda4对应着用作/home目录的分区）<br>mount <span class="hljs-regexp">/dev/</span>sda1 <span class="hljs-regexp">/mnt/</span>boot （sda1对应着启动分区）<br></code></pre></td></tr></table></figure><p>不要变顺序！</p><h4 id="2-6安装系统和基础软件"><a href="#2-6安装系统和基础软件" class="headerlink" title="2.6安装系统和基础软件"></a>2.6安装系统和基础软件</h4><p>啊啊啊，相信看到这里的你一定很有耐心呀！</p><p>系统包括<br>base base-devel linux linux-firmware<br>基础软件包括<br>dhcpcd iwd vim sudo bash-completion nano net-tools openssh man git wget zsh fish</p><p>输入</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">pacstrap /mnt <span class="hljs-keyword">base</span> <span class="hljs-keyword">base</span>-devel linux linux-firmware dhcpcd iwd vim sudo bash-completion nano net-tools openssh man git wget zsh fish<br></code></pre></td></tr></table></figure><p>够它跑一会了，喝口水，上趟厕所吧。（欸，我还真上了厕所(。・ω・。)）</p><h4 id="2-7生成fstab"><a href="#2-7生成fstab" class="headerlink" title="2.7生成fstab"></a>2.7生成fstab</h4><p>输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">genfstab -U <span class="hljs-regexp">/mnt &gt;&gt; /m</span>nt<span class="hljs-regexp">/etc/</span>fstab<br></code></pre></td></tr></table></figure><h3 id="3-装好系统后的操作"><a href="#3-装好系统后的操作" class="headerlink" title="3.装好系统后的操作"></a>3.装好系统后的操作</h3><h4 id="3-1进入系统"><a href="#3-1进入系统" class="headerlink" title="3.1进入系统"></a>3.1进入系统</h4><p>输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">arch-chroot /mnt<br></code></pre></td></tr></table></figure><p>切换到刚安装的系统内</p><h4 id="3-2配置网络"><a href="#3-2配置网络" class="headerlink" title="3.2配置网络"></a>3.2配置网络</h4><p>输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>hostname<br></code></pre></td></tr></table></figure><p>取一个好听的hostname，填在里面</p><p>编辑hosts<br>输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>hosts<br></code></pre></td></tr></table></figure><p>添加</p><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">127.0.0.1</span>   localhost<br>::<span class="hljs-number">1</span>         localhost<br><span class="hljs-number">127.0.1.1</span>   ghyuav     （刚刚取完的一个好听的hostname，我取的是<span class="hljs-string">&quot;ghyuav&quot;</span>）<br></code></pre></td></tr></table></figure><p>vim用法上面已经提到过了，还不明白可以上网搜或者用”nano”(反正我刚才留了一手，安装基础软件时安装了”nano”)</p><h4 id="3-3本地化"><a href="#3-3本地化" class="headerlink" title="3.3本地化"></a>3.3本地化</h4><h5 id="3-3-1设置时区、硬件时间"><a href="#3-3-1设置时区、硬件时间" class="headerlink" title="3.3.1设置时区、硬件时间"></a>3.3.1设置时区、硬件时间</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">ln -sf <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/zoneinfo/</span>Asia<span class="hljs-regexp">/Shanghai /</span>etc/localtime<br>hwclock --systohc<br></code></pre></td></tr></table></figure><h5 id="3-3-2设置语言"><a href="#3-3-2设置语言" class="headerlink" title="3.3.2设置语言"></a>3.3.2设置语言</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>locale.gen<br></code></pre></td></tr></table></figure><p>分别把<br>#en_US.UTF-8.UTF-8<br>#zh_CN.UTF-8.UTF-8<br>前面的”#”去掉<br>然后保存并退出</p><p>使语言环境生效</p><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">locale-gen<br>echo <span class="hljs-string">&#x27;LANG=en_US.UTF-8&#x27;</span> &gt; <span class="hljs-regexp">/etc/</span>locale.conf<br></code></pre></td></tr></table></figure><p><strong>千万不要耍小聪明，既然有en_US，那我换成zh-CN不就有中文了吗？</strong><br><strong>那么做的结果只会使中文变成小方块</strong></p><h4 id="3-4设置镜像源"><a href="#3-4设置镜像源" class="headerlink" title="3.4设置镜像源"></a>3.4设置镜像源</h4><p>输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>pacman.conf<br></code></pre></td></tr></table></figure><p>然后删掉[multilib]这几行前的”#”，在末尾添加以下两行：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">[archlinuxcn]<br>Server = https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/archlinuxcn/</span><span class="hljs-variable">$arch</span><br></code></pre></td></tr></table></figure><p>保存并退出</p><h4 id="3-5设置用户"><a href="#3-5设置用户" class="headerlink" title="3.5设置用户"></a>3.5设置用户</h4><h5 id="3-5-1设置管理员密码"><a href="#3-5-1设置管理员密码" class="headerlink" title="3.5.1设置管理员密码"></a>3.5.1设置管理员密码</h5><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">passwd root</span><br></code></pre></td></tr></table></figure><p>输入两遍密码，不会有显示</p><h5 id="3-5-2添加新用户"><a href="#3-5-2添加新用户" class="headerlink" title="3.5.2添加新用户"></a>3.5.2添加新用户</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">useradd -m -G wheel -s <span class="hljs-regexp">/bin/</span>bash ghyuav （<span class="hljs-string">&quot;ghyuav&quot;</span>可改成其他名字）<br></code></pre></td></tr></table></figure><p>设置密码</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">passwd</span> ghyuav （<span class="hljs-string">&quot;ghyuav&quot;</span>是刚才添加的用户名）<br></code></pre></td></tr></table></figure><h5 id="3-5-3编辑权限"><a href="#3-5-3编辑权限" class="headerlink" title="3.5.3编辑权限"></a>3.5.3编辑权限</h5><p>编辑ghyuav用户的权限</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">EDITOR</span><span class="hljs-operator">=</span>vim visudo<br></code></pre></td></tr></table></figure><p>找到”# %wheel ALL&#x3D;(ALL:ALL)ALL”<br>删除前面的”# “</p><h4 id="3-6安装cpu解码软件和GRUB"><a href="#3-6安装cpu解码软件和GRUB" class="headerlink" title="3.6安装cpu解码软件和GRUB"></a>3.6安装cpu解码软件和GRUB</h4><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">pacman -Sy intel-ucode grub efibootmgr <span class="hljs-built_in">os</span>-prober （这里是intel的cpu，如果是amd的，请把<span class="hljs-string">&quot;intel-ucode&quot;</span>替换为<span class="hljs-string">&quot;amd-ucode&quot;</span>）<br></code></pre></td></tr></table></figure><p>安装grub</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">grub-install <span class="hljs-attribute">--target</span>=x86_64-efi <span class="hljs-attribute">--efi-directory</span>=/boot <span class="hljs-attribute">--bootloader-id</span>=GRUB<br></code></pre></td></tr></table></figure><p>生成grub</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">grub-mkconfig -o <span class="hljs-regexp">/boot/g</span>rub/grub.cfg<br></code></pre></td></tr></table></figure><h4 id="3-7安装一堆软件、字体，设置开机启动"><a href="#3-7安装一堆软件、字体，设置开机启动" class="headerlink" title="3.7安装一堆软件、字体，设置开机启动"></a>3.7安装一堆软件、字体，设置开机启动</h4><p>vmware可以装</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">pacman -S gtkmm gtk2 gtkmm3 <span class="hljs-keyword">open</span>-<span class="hljs-keyword">vm</span>-tools xf86-<span class="hljs-built_in">input</span>-vmmouse xf86-video-vmware<br></code></pre></td></tr></table></figure><p>安装一堆软件、字体，设置开机启动</p><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gauss">pacman -S plasma konsole dolphin （安装桌面、终端模拟器、文件管理器）<br>pacman -S ntfs<span class="hljs-number">-3</span>g （可以读取ntfs格式磁盘 实体机上推荐安装）<br>pacman -S os-prober （查找已安装的操作系统 实体机上推荐安装）<br>pacman -S adobe-source-han-serif-cn-<span class="hljs-built_in">fonts</span> adobe-source-han-sans-cn-<span class="hljs-built_in">fonts</span> wqy-zenhei wqy-microhei noto-<span class="hljs-built_in">fonts</span>-cjk noto-<span class="hljs-built_in">fonts</span>-emoji noto-<span class="hljs-built_in">fonts</span>-extra ttf-dejavu （安装各种字体）<br>pacman -S firefox ark gwenview packagekit-qt5 packagekit appstream-qt appstream man neofetch net-tools networkmanager openssh git wget（安装常用软件）<br>systemctl <span class="hljs-keyword">enable</span> NetworkManager sddm vmtoolsd sshd （启动系统服务）<br></code></pre></td></tr></table></figure><div class="note note-warning">            <p>仅适用于VMware虚拟机的操作</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo vim <span class="hljs-regexp">/etc/m</span>kinitcpio.conf<br></code></pre></td></tr></table></figure><p>添加以下内容</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">MODULES</span><span class="hljs-operator">=</span>(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)<br></code></pre></td></tr></table></figure><p>保存并退出</p>          </div><p>生效配置文件</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">mkinitcpio -<span class="hljs-selector-tag">p</span> linux<br></code></pre></td></tr></table></figure><p>输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure><p>回到live环境，<br>卸载本机的&#x2F;mnt目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">umount -R /mnt<br></code></pre></td></tr></table></figure><p>最后reboot重启</p><h3 id="大功告成！！"><a href="#大功告成！！" class="headerlink" title="大功告成！！"></a>大功告成！！</h3><p>大功告成<br>最终效果放出来：<br><img src="/img/20230119120405.png" alt="img" title="arch"></p><p>我去，不知不觉写这么多，花了两天半，踩各种坑，虚拟机安一遍，实体机安一遍，可算是整完了</p><p>待完善……</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Arch安装踩坑记&quot;&gt;&lt;a href=&quot;#Arch安装踩坑记&quot; class=&quot;headerlink&quot; title=&quot;Arch安装踩坑记&quot;&gt;&lt;/a&gt;Arch安装踩坑记&lt;/h2&gt;&lt;p&gt;哇，网上的教程真是让我大开眼界啊，有好多错误，坑一个比一个多，我也一个接一个踩。&lt;b</summary>
+      
+    
+    
+    
+    
+    <category term="Arch" scheme="https://ghyuav.netlify.app/tags/Arch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简易git配置教程</title>
+    <link href="https://ghyuav.netlify.app/2023/01/16/%E7%AE%80%E6%98%93git%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"/>
+    <id>https://ghyuav.netlify.app/2023/01/16/%E7%AE%80%E6%98%93git%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</id>
+    <published>2023-01-16T04:26:07.000Z</published>
+    <updated>2023-01-20T03:51:57.512Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="git配置过程"><a href="#git配置过程" class="headerlink" title="git配置过程"></a>git配置过程</h2><p>简易的git配置教程</p><h3 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h3><p><img src="/img/2023011606.jpg" alt="这是图片" title="git"><br>官网就不指望了，我曾经试了一下，用浏览器下载了一整天都没下载完（其实就刚开始几分钟有速度，到后来就变成0B&#x2F;s了）<br>直接用镜像吧：<a href="https://mirror.tuna.tsinghua.edu.cn/github-release/git-for-windows/git/LatestRelease/">Git下载链接</a><br>安装过程一路确认就行<br>详细安装方法可以参考<a href="https://blog.csdn.net/mukes/article/details/115693833">这篇文章</a></p><h3 id="设置用户名、邮箱"><a href="#设置用户名、邮箱" class="headerlink" title="设置用户名、邮箱"></a>设置用户名、邮箱</h3><p>打开 Git Bash<br>输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name Ghyuav    (github用户名)<br>git config --global user.email ghyuav2021@163.com    (github绑定的邮箱)<br></code></pre></td></tr></table></figure><h3 id="设置ssh"><a href="#设置ssh" class="headerlink" title="设置ssh"></a>设置ssh</h3><p>输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&#x27;ghyuav2021@163.com&#x27;</span>    (github绑定的邮箱)<br></code></pre></td></tr></table></figure><p>无脑按三下Enter键。<br>当出现</p><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">+---[RSA 3072]----+<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">*乱七八糟的东西   </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>|<span class="hljs-string">                 </span>|<br>+----[SHA256]-----+<br></code></pre></td></tr></table></figure><p>时，<br>在你的用户文件夹下 找到&#x2F;.ssh目录，打开”id_rsa.pub”并复制里面的所有内容<br>打开你github的个人设置，点击侧边栏中的”SSH and GPG keys”，在右边的”SSH keys”中点击”New SSH key”，把刚刚的公钥粘贴进来，然后点击”Add SSH key”添加公钥。</p><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在本地目录下打开Git Bash，输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure><h3 id="选择现有远程仓库"><a href="#选择现有远程仓库" class="headerlink" title="选择现有远程仓库"></a>选择现有远程仓库</h3><p>输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote set-url origin https://github.com/Ghyuav/ghyuav.github.io.git    (你的远程仓库地址)<br></code></pre></td></tr></table></figure><h3 id="完成……了吗？"><a href="#完成……了吗？" class="headerlink" title="完成……了吗？"></a>完成……了吗？</h3><p>push时出现了一个奇怪错误：</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">fatal: <span class="hljs-title">unable</span> <span class="hljs-title">to</span> <span class="hljs-title">access</span> &#x27;<span class="hljs-title">https</span>://<span class="hljs-title">github.com</span>/<span class="hljs-title">Ghyuav</span>/<span class="hljs-title">ghyuav.github.io.git</span>/&#x27;: <span class="hljs-title">SSL</span> <span class="hljs-title">certificate</span> <span class="hljs-title">problem</span>: <span class="hljs-title">unable</span> <span class="hljs-title">to</span> <span class="hljs-title">get</span> <span class="hljs-title">local</span> <span class="hljs-title">issuer</span> <span class="hljs-title">certificate</span></span><br></code></pre></td></tr></table></figure><p>解决：<br>需要解除SSL验证，再重新执行克隆或者其他操作。<br>输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure><p>立刻见效。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;git配置过程&quot;&gt;&lt;a href=&quot;#git配置过程&quot; class=&quot;headerlink&quot; title=&quot;git配置过程&quot;&gt;&lt;/a&gt;git配置过程&lt;/h2&gt;&lt;p&gt;简易的git配置教程&lt;/p&gt;
+&lt;h3 id=&quot;下载git&quot;&gt;&lt;a href=&quot;#下载git&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="git" scheme="https://ghyuav.netlify.app/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>访问谷歌全家桶？</title>
+    <link href="https://ghyuav.netlify.app/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/"/>
+    <id>https://ghyuav.netlify.app/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/</id>
+    <published>2023-01-16T01:24:29.000Z</published>
+    <updated>2023-01-20T03:52:33.404Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="访问谷歌全家桶？"><a href="#访问谷歌全家桶？" class="headerlink" title="访问谷歌全家桶？"></a>访问谷歌全家桶？</h2><h3 id="为什么不能访问谷歌？"><a href="#为什么不能访问谷歌？" class="headerlink" title="为什么不能访问谷歌？"></a>为什么不能访问谷歌？</h3><blockquote><p>2010年3月23日3时3分，谷歌高级副总裁、首席法律官大卫·德拉蒙德公开发表声明，宣布谷歌关闭在中国大陆市场搜索服务，并将搜索服务由中国内地转至香港。</p></blockquote><p>原来谷歌（中国）那么早就亡了……</p><p>还有一个原因：<br>墙。</p><h3 id="Clash-小猫"><a href="#Clash-小猫" class="headerlink" title="Clash (小猫)"></a>Clash (小猫)</h3><p>Clash官方github releases页在<a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">这里</a><br>安装后是这个样子的<br><img src="/img/20230116093904.png" alt="这是图片" title="Clash For Winodws"><br>打开Clash订阅地址，在<a href="https://clashnode.com/">这里</a>，并进入一个最新文章<br><img src="/img/2023011600.png" alt="这是图片" title="clashnode"><br>找到”订阅链接-clash订阅链接”，复制下来<br><img src="/img/2023011601.png" alt="这是图片" title="clashnode"><br>回到clash中，点击”配置-从url下载”，粘贴在这里，点击”下载”<br><img src="/img/2023011602.png" alt="这是图片" title="Clash For Winodws"><br>点击”代理-测速按钮”，双击选中一个延迟最低的节点（注意不要选择中国节点，否则无法访问谷歌）<br><img src="/img/2023011603.png" alt="这是图片" title="Clash For Winodws"><br>回到”主页”，打开系统代理<br><img src="/img/2023011604.png" alt="这是图片" title="Clash For Winodws"><br>这是最终效果<br><img src="/img/2023011605.png" alt="这是图片" title="Clash For Winodws"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;访问谷歌全家桶？&quot;&gt;&lt;a href=&quot;#访问谷歌全家桶？&quot; class=&quot;headerlink&quot; title=&quot;访问谷歌全家桶？&quot;&gt;&lt;/a&gt;访问谷歌全家桶？&lt;/h2&gt;&lt;h3 id=&quot;为什么不能访问谷歌？&quot;&gt;&lt;a href=&quot;#为什么不能访问谷歌？&quot; class=&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="google" scheme="https://ghyuav.netlify.app/tags/google/"/>
+    
+    <category term="网络" scheme="https://ghyuav.netlify.app/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Winodws UEFI引导修复</title>
+    <link href="https://ghyuav.netlify.app/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/"/>
+    <id>https://ghyuav.netlify.app/2023/01/13/WinodwsUEFI%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/</id>
+    <published>2023-01-13T01:52:22.000Z</published>
+    <updated>2023-01-20T03:52:00.357Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Winodws-UEFI引导修复"><a href="#Winodws-UEFI引导修复" class="headerlink" title="Winodws UEFI引导修复"></a>Winodws UEFI引导修复</h2><p>这两天闲着没事，在实体机上装Ubuntu双系统，用了一个残次品U盘当启动盘，刚开始还好好的呢，突然就挂了，grub把Windows Boot Manager覆盖了，Ubuntu还没装完，一重启，好家伙，哪个系统都进不去。在网上搜了好长时间，整理出了这个方法。（懒得重装系统，还有，<strong>不要用残次品U盘</strong>！）</p><h3 id="修复方法"><a href="#修复方法" class="headerlink" title="修复方法"></a>修复方法</h3><p>1.准备一个U盘（大于8G），并制作启动盘。<br>2.U盘启动时多次强制重启打断启动，过几次会自动进入到系统修复界面<br>3.依次点击 疑难解答-高级选项-命令提示符<br>输入以下命令</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">diskpart<br>list <span class="hljs-built_in">vol</span><br></code></pre></td></tr></table></figure><p>会输出</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmd">DISKPART&gt; list <span class="hljs-built_in">vol</span><br><br>  卷 ###      LTR  标签         <span class="hljs-built_in">FS</span>     类型        大小     状态       信息<br>  ----------  ---  -----------  -----  ----------  -------  ---------  --------<br>  卷     <span class="hljs-number">0</span>     D                NTFS   磁盘分区         <span class="hljs-number">931</span> GB  正常<br>  卷     <span class="hljs-number">1</span>     E                NTFS   磁盘分区         <span class="hljs-number">111</span> GB  正常<br>  卷     <span class="hljs-number">2</span>                      FAT32  磁盘分区         <span class="hljs-number">512</span> MB  正常         系统<br>  卷     <span class="hljs-number">3</span>     C   新加卷          NTFS   磁盘分区         <span class="hljs-number">476</span> GB  正常         启动<br>  卷     <span class="hljs-number">4</span>     G   wepe         exFAT  可移动           <span class="hljs-number">28</span> GB  正常<br>  卷     <span class="hljs-number">5</span>     F   新加卷          NTFS   磁盘分区        <span class="hljs-number">1863</span> GB  正常<br></code></pre></td></tr></table></figure><p>可见，”卷 2”是EFI分区（EFI分区一般大小只有几百MB，文件系统一般为FAT32且在系统盘上）</p><p>接下来输入以下命令</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmd">select volume x (x是刚才的EFI分区卷号，例如：<span class="hljs-number">2</span>)<br>assign letter=J (z是给EFI分区分配一个盘符，要从这里创建启动文件)<br><span class="hljs-keyword">exit</span> (退出DISKPART)<br><span class="hljs-built_in">cd</span> /d J:\EFI\Microsoft\Boot\ (J是刚才给EFI分区分配的盘符)<br>bootrec/fixboot<br><span class="hljs-built_in">ren</span> BCD BCD.bak<br>bcdboot C:\Windows /l zh-cn /s J: /f ALL (C:是Windows所在的盘符，J:是刚才给EFI分区分配的盘符)<br>bootrec /rebuildbcd<br></code></pre></td></tr></table></figure><p><strong>“&#x2F;l”是小写“L”！</strong><br>命令执行完后重启，拔出启动盘，你会发现Winodws UEFI引导修复了，成功进入系统。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Winodws-UEFI引导修复&quot;&gt;&lt;a href=&quot;#Winodws-UEFI引导修复&quot; class=&quot;headerlink&quot; title=&quot;Winodws UEFI引导修复&quot;&gt;&lt;/a&gt;Winodws UEFI引导修复&lt;/h2&gt;&lt;p&gt;这两天闲着没事，在实体机上装</summary>
+      
+    
+    
+    
+    
+    <category term="Ubuntu" scheme="https://ghyuav.netlify.app/tags/Ubuntu/"/>
+    
+    <category term="Windows" scheme="https://ghyuav.netlify.app/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo-fluid免费部署评论功能</title>
+    <link href="https://ghyuav.netlify.app/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"/>
+    <id>https://ghyuav.netlify.app/2023/01/12/hexo-fluid%E9%83%A8%E7%BD%B2%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</id>
+    <published>2023-01-11T23:48:04.000Z</published>
+    <updated>2023-01-20T03:52:24.270Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="hexo-fluid免费部署评论功能"><a href="#hexo-fluid免费部署评论功能" class="headerlink" title="hexo-fluid免费部署评论功能"></a>hexo-fluid免费部署评论功能</h2><h3 id="giscus"><a href="#giscus" class="headerlink" title="giscus"></a>giscus</h3><p>giscus是一个由 GitHub Discussions 驱动的评论系统，部署方便，无跟踪，无广告，永久免费。<br>无需数据库。全部数据均储存在 GitHub Discussions 中。</p><p>首先，要在你的github中安装<a href="https://github.com/apps/giscus">giscus app</a><br>点击”install”即可<br><img src="/img/202301120806.png" alt="这是图片" title="giscus app"></p><p>然后如图依次点击”Only select repositories”和”Select repositories”,并选择你存储评论的仓库。<br>点击”install”安装<br><img src="/img/202301120808.png" alt="这是图片" title="giscus"></p><p>打开<a href="https://giscus.app/">giscus官网</a>，进一步配置<br>找到 配置-仓库<br>填入仓库<br><img src="/img/20230112091604.png" alt="这是图片" title="配置-仓库"></p><p>如果提示”<font color='red'>无法在此仓库上使用 giscus。请确保以上条件均已满足。</font>“<br>你需要确保此仓库是公开的<br>Discussions功能已在你的仓库中启用。</p><p>启用Discussions功能的方法：<br>在你的仓库中点击”Settings”，找到”General-Features”,并启用”Discussions”<br><img src="/img/202301120931.png" alt="这是图片" title="启用 Discussions"></p><p>接下来回到<a href="https://giscus.app/">giscus官网</a>，填入仓库<br>当显示”<font color='green'>成功！此仓库满足所有条件。</font>“时，如图配置”页面 ↔️ discussion 映射关系”、”Discussion 分类”(“特性”、”主题”根据个人喜好配置)<br><img src="/img/202301120934.png" alt="这是图片" title="配置 页面 ↔️ discussion 映射关系、Discussion 分类"><br>最后在”启用 giscus”中将对应的</p><ul><li>repo</li><li>repo-id</li><li>category</li><li>category-id</li><li>mapping</li><li>input-position</li><li>lang</li></ul><p>分别填入_config.yml中giscus插件的必要参数<br>并在_config.yml中启用评论插件</p><p>最终效果如下<br><img src="/img/202301121025.png" alt="这是图片" title="最终效果"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;hexo-fluid免费部署评论功能&quot;&gt;&lt;a href=&quot;#hexo-fluid免费部署评论功能&quot; class=&quot;headerlink&quot; title=&quot;hexo-fluid免费部署评论功能&quot;&gt;&lt;/a&gt;hexo-fluid免费部署评论功能&lt;/h2&gt;&lt;h3 id=&quot;g</summary>
+      
+    
+    
+    
+    
+    <category term="hexo" scheme="https://ghyuav.netlify.app/tags/hexo/"/>
+    
+    <category term="giscus" scheme="https://ghyuav.netlify.app/tags/giscus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</title>
+    <link href="https://ghyuav.netlify.app/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://ghyuav.netlify.app/2023/01/11/Ubuntu22-10%E4%B8%AD%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E4%B8%8D%E6%94%AF%E6%8C%81wayland%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2023-01-11T01:45:35.000Z</published>
+    <updated>2023-01-20T03:52:03.927Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Ubuntu22-10中腾讯会议不支持wayland协议解决方法"><a href="#Ubuntu22-10中腾讯会议不支持wayland协议解决方法" class="headerlink" title="Ubuntu22.10中腾讯会议不支持wayland协议解决方法"></a>Ubuntu22.10中腾讯会议不支持wayland协议解决方法</h2><p><img src="/img/20230111095507.png" alt="这是图片" title="Ubuntu22.10中腾讯会议不支持wayland协议"></p><h3 id="网上一种不可行方法，正确方法在这里"><a href="#网上一种不可行方法，正确方法在这里" class="headerlink" title="网上一种不可行方法，正确方法在这里"></a>网上一种<font color="red">不可行</font>方法，正确方法在<a href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E6%B3%95">这里</a></h3><div class="note note-danger">            <p>这个方法为不可行方法，至少在我电脑上不可行，可行方法在<a href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E6%B3%95">这里</a></p>          </div><p>ubuntu关闭wayland</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/gdm3/custom.conf<br></code></pre></td></tr></table></figure><p>把 #WaylandEnable&#x3D;false 的注释井号去掉</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo service gdm3 restart<br></code></pre></td></tr></table></figure><blockquote><p>作者：玉冷佩丁东<br>链接：<a href="https://www.zhihu.com/question/538842265/answer/2652565788">https://www.zhihu.com/question/538842265/answer/2652565788</a><br>来源：知乎</p></blockquote><p>这种方法只会让我的屏幕<strong>发黄发亮</strong>晃瞎我的眼<del>（别问我为什么没有图，截图截不出那效果）</del></p><h3 id="可行方法"><a href="#可行方法" class="headerlink" title="可行方法"></a>可行方法</h3><p>其实很简单<br>第一步，先注销<br><img src="/img/20230111095806.png" alt="这是图片" title="注销"><br>第二步，在输入密码界面点击“小齿轮”然后点击“Ubuntu on Xorg”<br><img src="/img/20230111100309.png" alt="这是图片" title="Ubuntu on Xorg"><br>接下来登入后你会发现，腾讯会议可以打开了<br><img src="/img/20230111101236.png" alt="这是图片" title="完成！"><br>就是这么简单</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Ubuntu22-10中腾讯会议不支持wayland协议解决方法&quot;&gt;&lt;a href=&quot;#Ubuntu22-10中腾讯会议不支持wayland协议解决方法&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu22.10中腾讯会议不支持wayland协议</summary>
+      
+    
+    
+    
+    
+    <category term="Ubuntu" scheme="https://ghyuav.netlify.app/tags/Ubuntu/"/>
+    
+    <category term="腾讯会议" scheme="https://ghyuav.netlify.app/tags/%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>木鱼-修身养性</title>
+    <link href="https://ghyuav.netlify.app/2023/01/10/%E6%9C%A8%E9%B1%BC-%E4%BF%AE%E8%BA%AB%E5%85%BB%E6%80%A7/"/>
+    <id>https://ghyuav.netlify.app/2023/01/10/%E6%9C%A8%E9%B1%BC-%E4%BF%AE%E8%BA%AB%E5%85%BB%E6%80%A7/</id>
+    <published>2023-01-10T12:10:26.000Z</published>
+    <updated>2023-01-20T03:52:38.813Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="敲木鱼，攒功德"><a href="#敲木鱼，攒功德" class="headerlink" title="敲木鱼，攒功德"></a>敲木鱼，攒功德</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><blockquote><p>木鱼是一种法器，多用于佛教、道教的功课与法会。相传鱼昼夜不合目，故刻木像鱼形，击之以警戒僧众应昼夜思道。形制有二：一为挺直鱼形，用来粥饭或集众、警众，悬挂在寺院走廊上。二为圆状鱼形，诵经时所用，放在案上。明、清以来，民间音乐和潮剧、粤剧中常用到木鱼。使木鱼除法器外兼具乐器功能。</p></blockquote><h3 id="来敲电子木鱼！"><a href="#来敲电子木鱼！" class="headerlink" title="来敲电子木鱼！"></a>来敲电子木鱼！</h3><p>点击黑圆以开始<br><a href="/html/muyu.html">全屏纯享</a></p><iframe src="/html/muyu.html" width=100% height="500" frameborder="0"></iframe>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;敲木鱼，攒功德&quot;&gt;&lt;a href=&quot;#敲木鱼，攒功德&quot; class=&quot;headerlink&quot; title=&quot;敲木鱼，攒功德&quot;&gt;&lt;/a&gt;敲木鱼，攒功德&lt;/h2&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介</summary>
+      
+    
+    
+    
+    
+    <category term="木鱼" scheme="https://ghyuav.netlify.app/tags/%E6%9C%A8%E9%B1%BC/"/>
+    
+    <category term="小游戏" scheme="https://ghyuav.netlify.app/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内网穿透-Terraria服务器</title>
+    <link href="https://ghyuav.netlify.app/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://ghyuav.netlify.app/2023/01/10/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
+    <published>2023-01-10T05:39:02.000Z</published>
+    <updated>2023-01-20T03:52:16.695Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><h3 id="什么是内网穿透？"><a href="#什么是内网穿透？" class="headerlink" title="什么是内网穿透？"></a>什么是内网穿透？</h3><blockquote><p>内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。下面就相互通信的主机在网&gt;络中与 NAT 设备的相对位置介绍内网穿透方法。<br>UDP 内网穿透的实质是利用路由器上的NAT 系统。NAT 是一种将私有（保留）地址转化为合法IP地址的转换技术，它被广泛应用于各种类型 Internet 接入方式和各种类型&gt;的网络中。NAT可以完成重用地址，并且对于内部的网络结构可以实现对外隐蔽。<br>(摘自百度)</p></blockquote><p>说白了就是可以从远程服务器访问你的电脑。</p><h3 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h3><p>这里我推荐一个内网穿透软件，免费稳定。<br><img src="/img/20230110134703.png" alt="这是图片" title="sakura frp官网"><br><a href="https://www.natfrp.com/">sakura frp</a><br>这里用Terraria服务器作为演示（不仅可以用作游戏服务器，网站、远程桌面也可以）</p><p>首先你需要注册一个樱花穿透的账号，这里不多做演示，但是注册后需要实名认证，api要<strong>花费一元钱</strong><br>接下来下载樱花穿透的<a href="https://www.natfrp.com/tunnel/download">客户端启动器</a><br><img src="/img/20230110135615.png" alt="这是图片" title="下载安装后是这个样子的"><br>然后在樱花穿透网页的首页中点击<strong>查看访问密钥</strong>，并把访问密钥复制到启动器中登录<br>接下来在启动器中添加隧道，填入本地ip（127.0.0.1）、Terraria服务器的端口（默认为7777）、隧道名称及描述和穿透节点即可。<br>恭喜，到这里你就完成了，远程ip与端口可以在启动器-日志中看见。</p><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><p>最后把樱花穿透的帮助文档放在这里<a href="https://doc.natfrp.com/">文档入口</a><br>遇到问题可以在那里找到答案。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;内网穿透&quot;&gt;&lt;a href=&quot;#内网穿透&quot; class=&quot;headerlink&quot; title=&quot;内网穿透&quot;&gt;&lt;/a&gt;内网穿透&lt;/h2&gt;&lt;h3 id=&quot;什么是内网穿透？&quot;&gt;&lt;a href=&quot;#什么是内网穿透？&quot; class=&quot;headerlink&quot; title=&quot;什</summary>
+      
+    
+    
+    
+    
+    <category term="网络" scheme="https://ghyuav.netlify.app/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="服务器" scheme="https://ghyuav.netlify.app/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Terraria" scheme="https://ghyuav.netlify.app/tags/Terraria/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网站重写计划 - 新网站上线啦</title>
+    <link href="https://ghyuav.netlify.app/2023/01/10/%E7%BD%91%E7%AB%99%E9%87%8D%E5%86%99%E8%AE%A1%E5%88%92/"/>
+    <id>https://ghyuav.netlify.app/2023/01/10/%E7%BD%91%E7%AB%99%E9%87%8D%E5%86%99%E8%AE%A1%E5%88%92/</id>
+    <published>2023-01-09T22:53:28.000Z</published>
+    <updated>2023-01-14T02:13:05.819Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="网站重写计划"><a href="#网站重写计划" class="headerlink" title="网站重写计划"></a>网站重写计划</h2><h3 id="重新上线"><a href="#重新上线" class="headerlink" title="重新上线"></a>重新上线</h3><p>鸽了有一年的时间了，终于有时间打理这里了</p><p>花了一下午，把以前的内容全删了，换上了<a href="https://hexo.io/">Hexo</a>框架<br>期间并不顺利，遇到了git抽风，github 404，netlify无法访问，各种奇葩错误：Failing build: Failed to prepare repo等<br>查了数百个文档，有的问题到现在也没解决。</p><h3 id="以后的计划"><a href="#以后的计划" class="headerlink" title="以后的计划"></a>以后的计划</h3><p>多写文章<br>多喝热水<br>多多读书<br>多多维护<br>……</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;网站重写计划&quot;&gt;&lt;a href=&quot;#网站重写计划&quot; class=&quot;headerlink&quot; title=&quot;网站重写计划&quot;&gt;&lt;/a&gt;网站重写计划&lt;/h2&gt;&lt;h3 id=&quot;重新上线&quot;&gt;&lt;a href=&quot;#重新上线&quot; class=&quot;headerlink&quot; title=&quot;重</summary>
+      
+    
+    
+    
+    
+    <category term="网站" scheme="https://ghyuav.netlify.app/tags/%E7%BD%91%E7%AB%99/"/>
+    
+  </entry>
+  
+</feed>
