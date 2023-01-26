@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>魔百盒m201-d安装armbian系统</title>
+    <link href="/2023/01/25/%E9%AD%94%E7%99%BE%E7%9B%92m201-d%E5%AE%89%E8%A3%85debian%E7%B3%BB%E7%BB%9F/"/>
+    <url>/2023/01/25/%E9%AD%94%E7%99%BE%E7%9B%92m201-d%E5%AE%89%E8%A3%85debian%E7%B3%BB%E7%BB%9F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="魔百盒m201-d安装armbian系统"><a href="#魔百盒m201-d安装armbian系统" class="headerlink" title="魔百盒m201-d安装armbian系统"></a>魔百盒m201-d安装armbian系统</h1><p>到手一台魔百盒，型号是m201-d，想装上armbian当服务器用(听说功耗挺小的)</p><div class="note note-danger">            <p>注意<br>本教程不保证一定成功<br>以下命令有一些需根据自己硬件情况适当修改<br>如果刷坏变砖请尝试救砖，不要发布不当言论，这样不会解决任何问题</p>          </div><h2 id="1-准备材料"><a href="#1-准备材料" class="headerlink" title="1 准备材料"></a>1 准备材料</h2><p>魔百盒x1<br>网线x1<br>大于4G的U盘x1 (一会要格式化)<br>能用的电脑x1 （下载镜像什么的）</p><h2 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2 准备工作"></a>2 准备工作</h2><h3 id="2-1-自带的系统不可以adb安装apk的情况，如果可以请跳过此步"><a href="#2-1-自带的系统不可以adb安装apk的情况，如果可以请跳过此步" class="headerlink" title="2.1 自带的系统不可以adb安装apk的情况，如果可以请跳过此步"></a>2.1 自带的系统不可以adb安装apk的情况，如果可以请跳过此步</h3><p>在网上搜教程，刷安卓固件。<br>我用的<a href="https://www.znds.com/tv-1208282-1-1.html">这篇教程</a></p><h3 id="2-2-安装Reboot-to-LibreELEC"><a href="#2-2-安装Reboot-to-LibreELEC" class="headerlink" title="2.2 安装Reboot to LibreELEC"></a>2.2 安装Reboot to LibreELEC</h3><p>用adb安装<a href="/file/Reboot_to_LibreELEC.apk">Reboot_to_LibreELEC</a></p><h3 id="2-3查看芯片"><a href="#2-3查看芯片" class="headerlink" title="2.3查看芯片"></a>2.3查看芯片</h3><p><strong>小心</strong>地拆开盒子（一定要小心，本人在拆的过程中成功磕掉一颗LED灯，还好不影响使用），可以看见这些东西<br><img src="/img/202301262.jpg" alt="img" title="m201-d"></p><ol><li>主芯片</li><li>电源开关</li><li>电源接口</li><li>AV</li><li>HDMI视频接口</li><li>网线接口</li><li>光线音频接口</li><li>usb2.0</li><li>tf卡插槽</li><li>usb2.0</li></ol><p>我们放大一下主芯片<br><img src="/img/202301261.jpg" alt="img" title="m201-d"><br>看见主芯片型号为“S905L”</p><h2 id="3-刷入armbian"><a href="#3-刷入armbian" class="headerlink" title="3 刷入armbian"></a>3 刷入armbian</h2><h3 id="3-1-下载armbian"><a href="#3-1-下载armbian" class="headerlink" title="3.1 下载armbian"></a>3.1 下载armbian</h3><p>打开<a href="https://github.com/ophub/amlogic-s9xxx-armbian/releases/tag/Armbian_jammy_01.18.0157">这个链接</a>，选择一个适合你的芯片的固件下载。<br>如果下载太慢可以用<a href="https://ghproxy.com/">GitHub Proxy</a>加速下载，IDM能跑满12MB&#x2F;s。</p><h3 id="3-2-刷入U盘"><a href="#3-2-刷入U盘" class="headerlink" title="3.2 刷入U盘"></a>3.2 刷入U盘</h3><p>下载一个<a href="https://github.com/balena-io/etcher/releases">balena-etcher</a>,<br>将下载的固件刷入U盘</p><div class="note note-danger">            <p>注意<br>这会格式化你的U盘</p>          </div><p><img src="/img/202301263.png" alt="img" title="balena-etcher"><br>如果你的U盘有很大空闲空间，你也可以用DiskGenius扩容。</p><div class="note note-warning">            <p>注意，扩容的是ROOTFS分区，不是BOOT分区。</p>          </div><p><img src="/img/202301264.png" alt="img" title="扩容"></p><h3 id="3-3-修改配置文件"><a href="#3-3-修改配置文件" class="headerlink" title="3.3 修改配置文件"></a>3.3 修改配置文件</h3><p><strong>重要的一步</strong><br>打开BOOT分区<br>依次打开dtb和amlogic文件夹，找到符合你的电视盒子芯片和型号的文件（例如meson-gxl-s905x-p212.dtb），将文件名复制下来<br>打开BOOT分区根目录下的uEnv.txt，将文件名粘贴到”FDT&#x3D;&#x2F;dtb&#x2F;amlogic&#x2F;“后面，例如</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">LINUX</span>=/zImage<br><span class="hljs-attribute">INITRD</span>=/uInitrd<br><span class="hljs-attribute">FDT</span>=/dtb/amlogic/meson-gxl-s905x-p212.dtb<br><span class="hljs-attribute">APPEND</span>=root=UUID=33dfc49b-e1f1-4b2d-8b95-4dfd62c5dac3 <span class="hljs-attribute">rootflags</span>=data=writeback rw <span class="hljs-attribute">rootfstype</span>=ext4 <span class="hljs-attribute">console</span>=ttyAML0,115200n8 <span class="hljs-attribute">console</span>=tty0 no_console_suspend <span class="hljs-attribute">consoleblank</span>=0 fsck.<span class="hljs-attribute">fix</span>=<span class="hljs-literal">yes</span> fsck.<span class="hljs-attribute">repair</span>=<span class="hljs-literal">yes</span> net.<span class="hljs-attribute">ifnames</span>=0 <span class="hljs-attribute">cgroup_enable</span>=cpuset <span class="hljs-attribute">cgroup_memory</span>=1 <span class="hljs-attribute">cgroup_enable</span>=memory <span class="hljs-attribute">swapaccount</span>=1<br></code></pre></td></tr></table></figure><h3 id="3-4-重启"><a href="#3-4-重启" class="headerlink" title="3.4 重启"></a>3.4 重启</h3><p>把U盘插入魔百盒，<br>启动刚刚安装的Reboot to LibreELEC，点击”yes”，魔百盒重启。<br>先黑屏一会，就可以看见在滚Linux启动的输出了。</p><h2 id="4-debian配置"><a href="#4-debian配置" class="headerlink" title="4 debian配置"></a>4 debian配置</h2><h3 id="4-1-用户设置"><a href="#4-1-用户设置" class="headerlink" title="4.1 用户设置"></a>4.1 用户设置</h3><p>刚开机会让你登录，用户名是root，密码是1234。<br>登陆成功后会让你重新设置root的密码。<br>还会让你创建一个新用户（非root）。</p><h3 id="4-2-镜像源设置"><a href="#4-2-镜像源设置" class="headerlink" title="4.2 镜像源设置"></a>4.2 镜像源设置</h3><p>这里可以在另一台设备上用ssh连接它，以便输入镜像源<br>在控制台输入</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ssh &lt;armbian上的用户名&gt;@&lt;armbian的ip&gt;<br></code></pre></td></tr></table></figure><p>用另一台设备打开<a href="https://mirror.tuna.tsinghua.edu.cn/help/debian/">Debian 镜像使用帮助-清华大学开源软件镜像站</a></p><p>在arbian上登录刚刚创建的用户，输入</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo cat <span class="hljs-regexp">/etc/i</span>ssue<br></code></pre></td></tr></table></figure><p>查看当前使用的debian版本<br>例如”bullseye”<br>通过另一台设备上的<a href="https://mirror.tuna.tsinghua.edu.cn/help/debian/">Debian 镜像使用帮助-清华大学开源软件镜像站</a>，修改镜像源。</p><p>debian基本配置完毕</p><h2 id="不足之处"><a href="#不足之处" class="headerlink" title="不足之处"></a>不足之处</h2><p>什么？<del>这不是饼干，这是……</del>你说可以脱离U盘启动吗？<br>我试了这些命令。</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo nand-sata-install<br><br>armbian-install<br><br>sudo sh <span class="hljs-regexp">/root/i</span>nstall.sh<br><br>sudo sh <span class="hljs-regexp">/root/i</span>nstall-<span class="hljs-number">2018</span>.sh<br></code></pre></td></tr></table></figure><p>以及网上的各种方法，没有一个好使的，不是开机变砖，就是出各种错误。<br>感兴趣的的话可以自己研究研究。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>服务器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>农历新年快乐！</title>
     <link href="/2023/01/22/%E5%86%9C%E5%8E%86%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81/"/>
     <url>/2023/01/22/%E5%86%9C%E5%8E%86%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81/</url>
@@ -28,6 +49,8 @@
     <tags>
       
       <tag>Arch</tag>
+      
+      <tag>linux</tag>
       
     </tags>
     
@@ -65,9 +88,9 @@
     
     <tags>
       
-      <tag>google</tag>
-      
       <tag>网络</tag>
+      
+      <tag>google</tag>
       
     </tags>
     
@@ -128,6 +151,8 @@
     
     <tags>
       
+      <tag>linux</tag>
+      
       <tag>Ubuntu</tag>
       
       <tag>腾讯会议</tag>
@@ -170,11 +195,11 @@
     
     <tags>
       
-      <tag>网络</tag>
-      
       <tag>服务器</tag>
       
       <tag>Terraria</tag>
+      
+      <tag>网络</tag>
       
     </tags>
     

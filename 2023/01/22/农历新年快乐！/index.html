@@ -355,6 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/01/25/%E9%AD%94%E7%99%BE%E7%9B%92m201-d%E5%AE%89%E8%A3%85debian%E7%B3%BB%E7%BB%9F/" title="魔百盒m201-d安装armbian系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">魔百盒m201-d安装armbian系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -375,27 +381,40 @@
   
     <article id="comments" lazyload>
       
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"UC2kp8litj9KSQlotDOWUIyi-MdYXbMMI","appKey":"iVn5qRFV9ZRAetC9Yr3tGrfy","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"ghyuav/ghyuav.github.io","repo-id":"R_kgDOIv6XQg","category":"General","category-id":"DIC_kwDOIv6XQs4CThzn","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"bottom","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
           }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
       });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
 
 
     </article>
