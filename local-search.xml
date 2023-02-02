@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>在电脑上使用手机麦克风，简单！(超级详细)</title>
+    <link href="/2023/02/02/%E5%9C%A8%E7%94%B5%E8%84%91%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E9%BA%A6%E5%85%8B%E9%A3%8E%EF%BC%8C%E7%AE%80%E5%8D%95%EF%BC%81(%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86)/"/>
+    <url>/2023/02/02/%E5%9C%A8%E7%94%B5%E8%84%91%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E9%BA%A6%E5%85%8B%E9%A3%8E%EF%BC%8C%E7%AE%80%E5%8D%95%EF%BC%81(%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86)/</url>
+    
+    <content type="html"><![CDATA[<h1 id="在电脑上使用手机麦克风"><a href="#在电脑上使用手机麦克风" class="headerlink" title="在电脑上使用手机麦克风"></a>在电脑上使用手机麦克风</h1><p>台式机一般不会自带麦克风，可是有时急需麦克风怎么办呢？一台手机就可以解决！</p><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3><div class="note note-success">            <p>请放心，手机端软件不需要Google Play，官网也没被墙，可以正常访问并下载</p>          </div><p>打开<a href="https://wolicheng.com/womic/download.html">官网下载地址</a></p><h4 id="下载安卓平台软件"><a href="#下载安卓平台软件" class="headerlink" title="下载安卓平台软件"></a>下载安卓平台软件</h4><p><img src="/img/2023020201.png" alt="img" title="下载"><br>你需要点击箭头所指的超链接，不通过Google Play下载</p><h4 id="下载Windows平台软件"><a href="#下载Windows平台软件" class="headerlink" title="下载Windows平台软件"></a>下载Windows平台软件</h4><p>安装运行环境（除非你安装过它）<br><a href="https://aka.ms/vs/16/release/vc_redist.x86.exe">VC runtime re-distributable (x86)</a>。</p><p>接下来，如图点击这个超链接<br><img src="/img/2023020202.png" alt="img" title="下载"></p><h3 id="软件安装过程省略"><a href="#软件安装过程省略" class="headerlink" title="软件安装过程省略"></a>软件安装过程省略</h3><p>不要说我不详细，这应该都会吧</p><h3 id="配置软件"><a href="#配置软件" class="headerlink" title="配置软件"></a>配置软件</h3><p>打开手机的WO Mic<br><img src="/img/2023020203.jpg" alt="img" title="手机端"><br>Windows的WO Mic Client<br><img src="/img/2023020204.png" alt="img" title="电脑端"></p><h4 id="数据线连接"><a href="#数据线连接" class="headerlink" title="数据线连接"></a>数据线连接</h4><p>1.将usb数据线连接手机和电脑<br>2.打开手机的“usb调试”（<a href="https://cn.bing.com/search?q=%E5%BC%80%E5%90%AFusb%E8%B0%83%E8%AF%95">要我帮你搜索一下吗？（打开手机的“usb调试）</a>）<br>3.将电脑端与手机端的链接方式改为”USB”<br>4.分别启动手机端和电脑端的服务</p><h4 id="蓝牙连接"><a href="#蓝牙连接" class="headerlink" title="蓝牙连接"></a>蓝牙连接</h4><p>1.打开手机与电脑的蓝牙<br>2.将手机与电脑连接<br>3.将电脑端与手机端的链接方式改为”蓝牙”<br>4.分别启动手机端和电脑端的服务</p><h4 id="Wi-Fi连接"><a href="#Wi-Fi连接" class="headerlink" title="Wi-Fi连接"></a>Wi-Fi连接</h4><p>1.将电脑与手机连接同一个Wi-Fi（电脑连手机热点也行）<br>2.将电脑端与手机端的链接方式改为”Wi-Fi”<br>3.先查看手机的”状态栏”，右侧的第二行会显示手机的ip地址，将它填入电脑端”建立连接”界面中的”手机ip地址”中。<br>4.分别启动手机端和电脑端的服务</p><h2 id="放在最后"><a href="#放在最后" class="headerlink" title="放在最后"></a>放在最后</h2><p>官网也提供了Linux的下载，没有图形界面，这是<a href="https://wolicheng.com/womic/wo_mic_linux.html">官方文档 WO Mic for Linux</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>软件推荐</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>魔百盒m201-d安装armbian系统</title>
     <link href="/2023/01/25/%E9%AD%94%E7%99%BE%E7%9B%92m201-d%E5%AE%89%E8%A3%85debian%E7%B3%BB%E7%BB%9F/"/>
     <url>/2023/01/25/%E9%AD%94%E7%99%BE%E7%9B%92m201-d%E5%AE%89%E8%A3%85debian%E7%B3%BB%E7%BB%9F/</url>
@@ -90,6 +109,8 @@
       
       <tag>网络</tag>
       
+      <tag>软件推荐</tag>
+      
       <tag>google</tag>
       
     </tags>
@@ -109,9 +130,9 @@
     
     <tags>
       
-      <tag>Ubuntu</tag>
-      
       <tag>Windows</tag>
+      
+      <tag>Ubuntu</tag>
       
     </tags>
     
@@ -200,6 +221,8 @@
       <tag>Terraria</tag>
       
       <tag>网络</tag>
+      
+      <tag>软件推荐</tag>
       
     </tags>
     
