@@ -100,9 +100,9 @@
     
     
     
-    <category term="Arch" scheme="https://ghyuav.netlify.app/tags/Arch/"/>
-    
     <category term="linux" scheme="https://ghyuav.netlify.app/tags/linux/"/>
+    
+    <category term="Arch" scheme="https://ghyuav.netlify.app/tags/Arch/"/>
     
   </entry>
   
@@ -173,9 +173,9 @@
     
     
     
-    <category term="Windows" scheme="https://ghyuav.netlify.app/tags/Windows/"/>
-    
     <category term="Ubuntu" scheme="https://ghyuav.netlify.app/tags/Ubuntu/"/>
+    
+    <category term="Windows" scheme="https://ghyuav.netlify.app/tags/Windows/"/>
     
   </entry>
   
@@ -221,11 +221,11 @@
     
     
     
-    <category term="linux" scheme="https://ghyuav.netlify.app/tags/linux/"/>
-    
     <category term="Ubuntu" scheme="https://ghyuav.netlify.app/tags/Ubuntu/"/>
     
     <category term="腾讯会议" scheme="https://ghyuav.netlify.app/tags/%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE/"/>
+    
+    <category term="linux" scheme="https://ghyuav.netlify.app/tags/linux/"/>
     
   </entry>
   

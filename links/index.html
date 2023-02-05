@@ -243,7 +243,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://bu.dusays.com/2022/10/17/634d313602a1e.png" srcset="/img/loading.gif" lazyload alt="西瓜撞地球"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -261,7 +261,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://cdn.jinyu.host/config/avatar.320.-1.webp" srcset="/img/loading.gif" lazyload alt="轨道兔"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -279,7 +279,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://img02.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg" srcset="/img/loading.gif" lazyload alt="安知鱼"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -297,7 +297,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://blog.beacox.space/img/avatar.png" srcset="/img/loading.gif" lazyload alt="BeaCox "
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -314,8 +314,8 @@
         <div class="card-content">
           
             <div class="link-avatar my-auto">
-              <img src="https://img.yt-blog.top/png/big_logo.png" srcset="/img/loading.gif" lazyload alt="动荡の初二少年"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+              <img src="https://img.yt-blog.top/png/logo.png" srcset="/img/loading.gif" lazyload alt="动荡の初二少年"
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -333,7 +333,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://www.xiwangly.top/avatar" srcset="/img/loading.gif" lazyload alt="Xiwangly&#39;s Blog"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -351,7 +351,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://cravatar.cn/avatar/b40138836d3876a921fb6d35e2d1c8ce?s=256" srcset="/img/loading.gif" lazyload alt="御坂の地下室"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -369,7 +369,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://www.yuanning0818.tk/logo.png" srcset="/img/loading.gif" lazyload alt="阳光下的小宁宁"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -387,7 +387,7 @@
           
             <div class="link-avatar my-auto">
               <img src="https://cdn.jsdelivr.net/gh/xiao-lin52/cdn-assets/images/avatar.webp" srcset="/img/loading.gif" lazyload alt="Islauso の树洞"
-                   onerror="this.onerror=null; this.src=this.srcset='/img/loading.gif'"/>
+                   onerror="this.onerror=null; this.src=this.srcset='/img/error.png'"/>
             </div>
           
           <div class="link-text">
@@ -418,40 +418,27 @@
   
     <article id="comments" lazyload>
       
-    <div id="giscus" class="giscus"></div>
-    <script type="text/javascript">
-      Fluid.utils.loadComments('#giscus', function() {
-        var options = {"repo":"ghyuav/ghyuav.github.io","repo-id":"R_kgDOIv6XQg","category":"General","category-id":"DIC_kwDOIv6XQs4CThzn","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"bottom","lang":"zh-CN"};
-        var attributes = {};
-        for (let option in options) {
-          if (!option.startsWith('theme-')) {
-            var key = option.startsWith('data-') ? option : 'data-' + option;
-            attributes[key] = options[option];
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UC2kp8litj9KSQlotDOWUIyi-MdYXbMMI","appKey":"iVn5qRFV9ZRAetC9Yr3tGrfy","path":"window.location.pathname","placeholder":"是空的","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
           }
-        }
-        var light = 'light';
-        var dark = 'dark';
-        window.GiscusThemeLight = light;
-        window.GiscusThemeDark = dark;
-        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
-        for (let attribute in attributes) {
-          var value = attributes[attribute];
-          if (value === undefined || value === null || value === '') {
-            delete attributes[attribute];
-          }
-        }
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://giscus.app/client.js');
-        s.setAttribute('crossorigin', 'anonymous');
-        for (let attribute in attributes) {
-          s.setAttribute(attribute, attributes[attribute]);
-        }
-        var ss = document.getElementsByTagName('script');
-        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
-        e.parentNode.insertBefore(s, e.nextSibling);
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
       });
-    </script>
-    <noscript>Please enable JavaScript to view the comments</noscript>
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
     </article>
