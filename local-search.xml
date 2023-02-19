@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>做了一款马鸥GPU占用指示器。占用越高，摇得越快。</title>
+    <link href="/2023/02/10/%E5%81%9A%E4%BA%86%E4%B8%80%E6%AC%BE%E9%A9%AC%E9%B8%A5GPU%E5%8D%A0%E7%94%A8%E6%8C%87%E7%A4%BA%E5%99%A8%E3%80%82%E5%8D%A0%E7%94%A8%E8%B6%8A%E9%AB%98%EF%BC%8C%E6%91%87%E5%BE%97%E8%B6%8A%E5%BF%AB%E3%80%82/"/>
+    <url>/2023/02/10/%E5%81%9A%E4%BA%86%E4%B8%80%E6%AC%BE%E9%A9%AC%E9%B8%A5GPU%E5%8D%A0%E7%94%A8%E6%8C%87%E7%A4%BA%E5%99%A8%E3%80%82%E5%8D%A0%E7%94%A8%E8%B6%8A%E9%AB%98%EF%BC%8C%E6%91%87%E5%BE%97%E8%B6%8A%E5%BF%AB%E3%80%82/</url>
+    
+    <content type="html"><![CDATA[<h1 id="做了一款马鸥GPU占用指示器。占用越高，摇得越快。"><a href="#做了一款马鸥GPU占用指示器。占用越高，摇得越快。" class="headerlink" title="做了一款马鸥GPU占用指示器。占用越高，摇得越快。"></a>做了一款马鸥GPU占用指示器。占用越高，摇得越快。</h1><p><img src="/img/MaZhao.gif" alt="MaZhao"><br>灵感来源：<a href="https://www.bilibili.com/read/cv21156846">做了一款只因CPU占用指示器，占用越低 舞越快</a><br>素材来源：<a href="https://www.bilibili.com/video/BV1CM411i7nK/">【流浪地球】夜の踊り马兆</a></p><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote><p>晓晞啊，这是海鸥吗?<br>我也没太见过，看样子应该是…咱们北京航天局的马主任！</p></blockquote><p>看了小破球，又看到网友的二创，发现了个神奇的东西–<strong>马鸥</strong><br>正好最近看见了<a href="https://www.bilibili.com/read/cv21156846"> 做了一款只因CPU占用指示器，占用越低舞越快 </a>这条视频。<br>欸，那我也做一个。<br>效果如图<br><img src="/img/2023021001.png" alt="MaZhao"></p><h2 id="上代码！"><a href="#上代码！" class="headerlink" title="上代码！"></a>上代码！</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pynvml<br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> pywin10 <span class="hljs-keyword">import</span> TaskBarIcon<br><span class="hljs-keyword">from</span> sys <span class="hljs-keyword">import</span> exit<br><br>window = Tk()<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;settings.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    data = f.read().split(<span class="hljs-string">&#x27;\n&#x27;</span>)  <span class="hljs-comment"># 显卡号及gif名</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_speed</span>():<br>    pynvml.nvmlInit()<br>    handle = pynvml.nvmlDeviceGetHandleByIndex(<span class="hljs-built_in">int</span>(data[<span class="hljs-number">0</span>]))  <span class="hljs-comment"># 指定显卡号</span><br>    meminfo = pynvml.nvmlDeviceGetMemoryInfo(handle)<br>    <span class="hljs-built_in">all</span> = meminfo.total/<span class="hljs-number">1024</span>  <span class="hljs-comment"># 获取全部显存(单位kb)</span><br>    use = meminfo.used/<span class="hljs-number">1024</span>  <span class="hljs-comment"># 获取已用显存(单位kb)</span><br>    speed = use/<span class="hljs-built_in">all</span>*<span class="hljs-number">100</span>  <span class="hljs-comment"># 算出已用百分之几</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">round</span>(speed)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">idx</span>):<br>    <span class="hljs-keyword">global</span> g<br>    speed = <span class="hljs-number">100</span>-get_speed()  <span class="hljs-comment"># 占用越高间隔越快</span><br>    <span class="hljs-built_in">print</span>(speed)<br>    frame = frames[idx]<br>    idx += <span class="hljs-number">1</span>  <span class="hljs-comment"># 下一帧的序号：在0~9之间循环(共10帧)</span><br>    g.configure(image=frame)  <span class="hljs-comment"># 刷新图片</span><br>    window.after(speed, update, idx % numIdx)<br><br><br>numIdx = <span class="hljs-built_in">int</span>(data[<span class="hljs-number">2</span>])  <span class="hljs-comment"># gif的帧数</span><br>frames = [PhotoImage(file=data[<span class="hljs-number">1</span>], <span class="hljs-built_in">format</span>=<span class="hljs-string">&#x27;gif -index %i&#x27;</span> % (i))<br>          <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numIdx)]<br>task = TaskBarIcon(icon=<span class="hljs-string">&quot;ico.ico&quot;</span>, hover_text=<span class="hljs-string">&#x27;MGPU&#x27;</span>,<br>                   menu_options=[[<span class="hljs-string">&#x27;退出&#x27;</span>, <span class="hljs-literal">None</span>, <span class="hljs-keyword">lambda</span>: exit(<span class="hljs-number">0</span>), <span class="hljs-number">0</span>]])<br>window.wm_attributes(<span class="hljs-string">&quot;-transparentcolor&quot;</span>, <span class="hljs-string">&quot;snow&quot;</span>)  <span class="hljs-comment"># 背景透明</span><br>g = Label(window, text=<span class="hljs-string">&#x27;--&#x27;</span>, background=<span class="hljs-string">&#x27;snow&#x27;</span>)<br>g.pack()<br>window.overrideredirect(<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 无边框</span><br>window.geometry(<span class="hljs-string">&#x27;240x240+0+0&#x27;</span>)  <span class="hljs-comment"># 为什么置顶后+0+0失效呢？</span><br>window.attributes(<span class="hljs-string">&#x27;-topmost&#x27;</span>, <span class="hljs-literal">True</span>)  <span class="hljs-comment"># 置顶</span><br>window.after(<span class="hljs-number">0</span>, update, <span class="hljs-number">0</span>)  <span class="hljs-comment"># 开始update</span><br>window.mainloop()<br><br></code></pre></td></tr></table></figure><h2 id="settings-txt是干啥用的"><a href="#settings-txt是干啥用的" class="headerlink" title="settings.txt是干啥用的"></a>settings.txt是干啥用的</h2><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs txt">0<br>MaZhao.gif<br>10<br></code></pre></td></tr></table></figure><p>第一行是显卡号，可以在“任务管理器”中查看（指定核心显卡或是独立显卡）。<br>第二行是gif文件，你可以用自定义的gif，但是必须更改第三行的内容。<br>第三行是gif的总帧数，更改gif后请根据你gif的帧数更改这行。</p><h2 id="打包好的"><a href="#打包好的" class="headerlink" title="打包好的"></a>打包好的</h2><div class="note note-danger">            <p>我使用pyinstaller打包，打包后文件较大。<br><strong>杀毒软件会误报，如果不放心可自行安装python运行上面的代码！</strong></p>          </div><p>关闭方法：在系统托盘里右键点击MGPU退出<br><a href="/file/MaZhao.zip">zip下载链接</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>在电脑上使用手机麦克风，简单！(超级详细)</title>
     <link href="/2023/02/02/%E5%9C%A8%E7%94%B5%E8%84%91%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E9%BA%A6%E5%85%8B%E9%A3%8E%EF%BC%8C%E7%AE%80%E5%8D%95%EF%BC%81(%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86)/"/>
     <url>/2023/02/02/%E5%9C%A8%E7%94%B5%E8%84%91%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E9%BA%A6%E5%85%8B%E9%A3%8E%EF%BC%8C%E7%AE%80%E5%8D%95%EF%BC%81(%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86)/</url>
@@ -67,9 +86,9 @@
     
     <tags>
       
-      <tag>linux</tag>
-      
       <tag>Arch</tag>
+      
+      <tag>linux</tag>
       
     </tags>
     
@@ -101,15 +120,15 @@
     <link href="/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/"/>
     <url>/2023/01/16/%E8%AE%BF%E9%97%AE%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%9F/</url>
     
-    <content type="html"><![CDATA[<h2 id="访问谷歌全家桶？"><a href="#访问谷歌全家桶？" class="headerlink" title="访问谷歌全家桶？"></a>访问谷歌全家桶？</h2><h3 id="为什么不能访问谷歌？"><a href="#为什么不能访问谷歌？" class="headerlink" title="为什么不能访问谷歌？"></a>为什么不能访问谷歌？</h3><blockquote><p>2010年3月23日3时3分，谷歌高级副总裁、首席法律官大卫·德拉蒙德公开发表声明，宣布谷歌关闭在中国大陆市场搜索服务，并将搜索服务由中国内地转至香港。</p></blockquote><p>原来谷歌（中国）那么早就亡了……</p><p>还有一个原因：<br>墙。</p><h3 id="Clash-小猫"><a href="#Clash-小猫" class="headerlink" title="Clash (小猫)"></a>Clash (小猫)</h3><p>Clash官方github releases页在<a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">这里</a><br>安装后是这个样子的<br><img src="/img/20230116093904.png" alt="这是图片" title="Clash For Winodws"><br>打开Clash订阅地址，在<a href="https://clashnode.com/">这里</a>，并进入一个最新文章<br><img src="/img/2023011600.png" alt="这是图片" title="clashnode"><br>找到”订阅链接-clash订阅链接”，复制下来<br><img src="/img/2023011601.png" alt="这是图片" title="clashnode"><br>回到clash中，点击”配置-从url下载”，粘贴在这里，点击”下载”<br><img src="/img/2023011602.png" alt="这是图片" title="Clash For Winodws"><br>点击”代理-测速按钮”，双击选中一个延迟最低的节点（注意不要选择中国节点，否则无法访问谷歌）<br><img src="/img/2023011603.png" alt="这是图片" title="Clash For Winodws"><br>回到”主页”，打开系统代理<br><img src="/img/2023011604.png" alt="这是图片" title="Clash For Winodws"><br>这是最终效果<br><img src="/img/2023011605.png" alt="这是图片" title="Clash For Winodws"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="访问谷歌全家桶？"><a href="#访问谷歌全家桶？" class="headerlink" title="访问谷歌全家桶？"></a>访问谷歌全家桶？</h2><h3 id="为什么不能访问谷歌？"><a href="#为什么不能访问谷歌？" class="headerlink" title="为什么不能访问谷歌？"></a>为什么不能访问谷歌？</h3><blockquote><p>2010年3月23日3时3分，谷歌高级副总裁、首席法律官大卫·德拉蒙德公开发表声明，宣布谷歌关闭在中国大陆市场搜索服务，并将搜索服务由中国内地转至香港。</p></blockquote><p>原来谷歌（中国）那么早就亡了……</p><p>还有一个原因：<br>墙。<br><button>awsd</button></p><h3 id="Clash-小猫"><a href="#Clash-小猫" class="headerlink" title="Clash (小猫)"></a>Clash (小猫)</h3><p>Clash官方github releases页在<a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">这里</a><br>安装后是这个样子的<br><img src="/img/20230116093904.png" alt="这是图片" title="Clash For Winodws"><br>打开Clash订阅地址，在<a href="https://clashnode.com/">这里</a>，并进入一个最新文章<br><img src="/img/2023011600.png" alt="这是图片" title="clashnode"><br>找到”订阅链接-clash订阅链接”，复制下来<br><img src="/img/2023011601.png" alt="这是图片" title="clashnode"><br>回到clash中，点击”配置-从url下载”，粘贴在这里，点击”下载”<br><img src="/img/2023011602.png" alt="这是图片" title="Clash For Winodws"><br>点击”代理-测速按钮”，双击选中一个延迟最低的节点（注意不要选择中国节点，否则无法访问谷歌）<br><img src="/img/2023011603.png" alt="这是图片" title="Clash For Winodws"><br>回到”主页”，打开系统代理<br><img src="/img/2023011604.png" alt="这是图片" title="Clash For Winodws"><br>这是最终效果<br><img src="/img/2023011605.png" alt="这是图片" title="Clash For Winodws"></p>]]></content>
     
     
     
     <tags>
       
-      <tag>网络</tag>
-      
       <tag>软件推荐</tag>
+      
+      <tag>网络</tag>
       
       <tag>google</tag>
       
@@ -130,9 +149,9 @@
     
     <tags>
       
-      <tag>Ubuntu</tag>
-      
       <tag>Windows</tag>
+      
+      <tag>Ubuntu</tag>
       
     </tags>
     
@@ -172,11 +191,11 @@
     
     <tags>
       
+      <tag>linux</tag>
+      
       <tag>Ubuntu</tag>
       
       <tag>腾讯会议</tag>
-      
-      <tag>linux</tag>
       
     </tags>
     
@@ -216,13 +235,13 @@
     
     <tags>
       
+      <tag>软件推荐</tag>
+      
       <tag>服务器</tag>
       
       <tag>Terraria</tag>
       
       <tag>网络</tag>
-      
-      <tag>软件推荐</tag>
       
     </tags>
     

@@ -73,7 +73,7 @@
   
 <link rel="stylesheet" href="/css/iconfont.css">
 <link rel="stylesheet" href="/css/rightkey.css">
-<link rel="stylesheet" href="/css/mouse.css">
+<link rel="stylesheet" href="/css/badge.css">
 
 
 
@@ -107,6 +107,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
+      <img width="32" height="32" src=/img/navigation.png>
       <strong>Ghyuav的博客</strong>
     </a>
 
@@ -255,7 +256,7 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -553,8 +554,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-      
-<p>Copyright © 2023  <br> Powered By  <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> <span>Hexo</span> </a> &  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <br> <img src="/img/meng_icp.png" srcset="/img/loading.gif" lazyload alt="萌ICP" width="25px" height="25px"> <a href="https://icp.gov.moe/?keyword=20230055" target="_blank">萌ICP备20230055号</a> ·  <img src="/img/netlify.png" srcset="/img/loading.gif" lazyload alt="netlify" width="25px" height="25px"> <a href="https://app.netlify.com/" target="_blank">Netlify提供托管&CDN</a> </p> <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> <script> L2Dwidget.init({ "model": { "jsonPath":"https://unpkg.com/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json", "scale": 1, "hHeadPos":0.5, "vHeadPos":0.618 }, "display": { "position": "left", "width": 100, "height": 100, "hOffset": 0, "vOffset": 0 }, "mobile": { "show": false, "scale": 0.5 }, "react": { "opacityDefault": 1, "opacityOnHover": 0.5 } }); </script> 
+       <div id="maomao" onMouseOut="duoMaomao()"></div> <p>Copyright © 2023  <br> <img src="/img/meng_icp.png" srcset="/img/loading.gif" lazyload alt="萌ICP" width="25px" height="25px"> <a href="https://icp.gov.moe/?keyword=20230055" target="_blank">萌ICP备20230055号</a> </p> <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> <script> L2Dwidget.init({ "model": { "jsonPath":"https://unpkg.com/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json", "scale": 1, "hHeadPos":0.5, "vHeadPos":0.618 }, "display": { "position": "left", "width": 100, "height": 100, "hOffset": 0, "vOffset": 0 }, "mobile": { "show": false, "scale": 0.5 }, "react": { "opacityDefault": 1, "opacityOnHover": 0.5 } }); </script> 
     </div>
   
   
@@ -580,7 +580,45 @@
     
   
 </div>
+<!-- 运行时间！ -->
+<div class="running-time">
+  <span id="RunTime_span">加载中...</span>
+  <script>
+      var StartTime = new Date('2023/1/10 00:00:00'); // 此处改为你的建站时间
 
+      function RunTime(){
+          window.setTimeout("show_runtime()", 1000);
+          var NowTime = new Date(); // 获取现在的时间
+
+          Time = (NowTime.getTime() - StartTime.getTime()) / 1000; // 计算已存活时间(单位秒)
+
+          AllSeconds = 365 * 24 * 60 * 60; // 一年全部有多少秒
+
+          Year = Time / AllSeconds; // 已存活时间除以一年的秒数，可以知道活了多少年
+          YearINT = Math.floor(Year); // 转为整数
+
+          Month = (Year - YearINT) * 12; // 整数与原来的数字的商乘12就可以知道活了多少月
+          MonthINT = Math.floor(Month); // 转为整数
+
+          Day = (Month - MonthINT) * ((7*31+5*30 )/12); //平均下大月小月天数，防止出现过大的偏差
+          DayINT = Math.floor(Day);
+
+          Hour = (Day - DayINT) * 24;
+          HourINT = Math.floor(Hour);
+
+          Minute = (Hour - HourINT) * 60;
+          MinuteINT = Math.floor(Minute);
+
+          Second = Math.floor((Minute - MinuteINT) * 60);
+
+
+          RunTime_span.innerHTML = "本站运行了" + YearINT + "年 " + MonthINT + "月 " + DayINT + "天 " + HourINT + "时 " + MinuteINT + "分 " + Second + "秒";
+          // 将数据替换到Span上
+      };
+      setInterval("RunTime()", 1000); // 每秒重复运行，时刻更新数据
+      RunTime();
+  </script>
+</div>
   
   
     <!-- 备案信息 ICP for China -->
@@ -596,6 +634,65 @@
 
   
   
+  <!-- 徽章 -->
+  <div id="badge">
+    
+        <a style="color: #FFF;" target="_blank" rel="noopener" href="https://hexo.io" class="github-badge" title="由Hexo驱动 ">
+            <!-- Lable -->
+            <span class="badge-lable badge-subject" style="padding: 4px 4px 4px 6px; background-color: #4D4D4D; border-radius: 5px 0px 0px 5px;">
+                Powered
+            </span>
+            <!-- Message -->
+            <span class="badge-message badge-subject" style="padding: 4px 4px 4px 6px; background-color: #007ec6; border-radius: 0px 5px 5px 0px;">
+                Hexo
+            </span>
+        </a>
+    
+        <a style="color: #FFF;" target="_blank" rel="noopener" href="https://app.netlify.com/" class="github-badge" title="由Netlify提供CDN服务 ">
+            <!-- Lable -->
+            <span class="badge-lable badge-subject" style="padding: 4px 4px 4px 6px; background-color: #4D4D4D; border-radius: 5px 0px 0px 5px;">
+                Hosted
+            </span>
+            <!-- Message -->
+            <span class="badge-message badge-subject" style="padding: 4px 4px 4px 6px; background-color: #03baac; border-radius: 0px 5px 5px 0px;">
+                Netlify
+            </span>
+        </a>
+    
+        <a style="color: #FFF;" target="_blank" rel="noopener" href="https://github.com/" class="github-badge" title="由Github提供代码托管 ">
+            <!-- Lable -->
+            <span class="badge-lable badge-subject" style="padding: 4px 4px 4px 6px; background-color: #4D4D4D; border-radius: 5px 0px 0px 5px;">
+                Source
+            </span>
+            <!-- Message -->
+            <span class="badge-message badge-subject" style="padding: 4px 4px 4px 6px; background-color: 	#4B0082; border-radius: 0px 5px 5px 0px;">
+                Github
+            </span>
+        </a>
+    
+        <a style="color: #FFF;" target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid" class="github-badge" title="使用Fluid主题 ">
+            <!-- Lable -->
+            <span class="badge-lable badge-subject" style="padding: 4px 4px 4px 6px; background-color: #4D4D4D; border-radius: 5px 0px 0px 5px;">
+                Theme
+            </span>
+            <!-- Message -->
+            <span class="badge-message badge-subject" style="padding: 4px 4px 4px 6px; background-color: #00BFFF; border-radius: 0px 5px 5px 0px;">
+                Fluid
+            </span>
+        </a>
+    
+        <a style="color: #FFF;" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="github-badge" title="本站使用 BY-NC-SA 4.0 许可协议 ">
+            <!-- Lable -->
+            <span class="badge-lable badge-subject" style="padding: 4px 4px 4px 6px; background-color: #4D4D4D; border-radius: 5px 0px 0px 5px;">
+                ©
+            </span>
+            <!-- Message -->
+            <span class="badge-message badge-subject" style="padding: 4px 4px 4px 6px; background-color: #f7702a; border-radius: 0px 5px 5px 0px;">
+                BY-NC-SA 4.0
+            </span>
+        </a>
+    
+</div>
   <div class="usercm" style="display: none;">
     <ul>
       <li><a href="javascript:history.go(-1);"><i class="fa fa-arrow-left fa-fw"></i><span>返回</span></a></li>
