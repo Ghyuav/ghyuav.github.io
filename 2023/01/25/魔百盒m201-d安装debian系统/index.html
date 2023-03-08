@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#3E5D8B">
+  <meta name="theme-color" content="#2F431E">
   <meta name="author" content="Ghyuav">
   <meta name="keywords" content="">
   
@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Ghyuav的博客">
 <meta property="og:description" content="魔百盒m201-d安装armbian系统到手一台魔百盒，型号是m201-d，想装上armbian当服务器用(听说功耗挺小的)              注意本教程不保证一定成功以下命令有一些需根据自己硬件情况适当修改如果刷坏变砖请尝试救砖，不要发布不当言论，这样不会解决任何问题            1 准备材料魔百盒x1网线x1大于4G的U盘x1 (一会要格式化)能用的电脑x1 （下载镜像什么的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ghyuav.netlify.app/img/202301262.jpg">
+<meta property="og:image" content="https://ghyuav.netlify.app/img/posts/202301262.jpg">
 <meta property="article:published_time" content="2023-01-25T14:05:55.000Z">
-<meta property="article:modified_time" content="2023-01-26T04:19:58.700Z">
+<meta property="article:modified_time" content="2023-03-08T07:50:08.559Z">
 <meta property="article:author" content="Ghyuav">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ghyuav.netlify.app/img/202301262.jpg">
+<meta name="twitter:image" content="https://ghyuav.netlify.app/img/posts/202301262.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -186,6 +186,18 @@
           
           
             <li class="nav-item">
+              <a class="nav-link" href="/links-page/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>链接墙</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
               <a class="nav-link" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html">
                 <i class="iconfont icon-md-train"></i>
                 <span>开往</span>
@@ -314,7 +326,7 @@
 <h2 id="1-准备材料"><a href="#1-准备材料" class="headerlink" title="1 准备材料"></a>1 准备材料</h2><p>魔百盒x1<br>网线x1<br>大于4G的U盘x1 (一会要格式化)<br>能用的电脑x1 （下载镜像什么的）</p>
 <h2 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2 准备工作"></a>2 准备工作</h2><h3 id="2-1-自带的系统不可以adb安装apk的情况，如果可以请跳过此步"><a href="#2-1-自带的系统不可以adb安装apk的情况，如果可以请跳过此步" class="headerlink" title="2.1 自带的系统不可以adb安装apk的情况，如果可以请跳过此步"></a>2.1 自带的系统不可以adb安装apk的情况，如果可以请跳过此步</h3><p>在网上搜教程，刷安卓固件。<br>我用的<a target="_blank" rel="noopener" href="https://www.znds.com/tv-1208282-1-1.html">这篇教程</a></p>
 <h3 id="2-2-安装Reboot-to-LibreELEC"><a href="#2-2-安装Reboot-to-LibreELEC" class="headerlink" title="2.2 安装Reboot to LibreELEC"></a>2.2 安装Reboot to LibreELEC</h3><p>用adb安装<a href="/file/Reboot_to_LibreELEC.apk">Reboot_to_LibreELEC</a></p>
-<h3 id="2-3查看芯片"><a href="#2-3查看芯片" class="headerlink" title="2.3查看芯片"></a>2.3查看芯片</h3><p><strong>小心</strong>地拆开盒子（一定要小心，本人在拆的过程中成功磕掉一颗LED灯，还好不影响使用），可以看见这些东西<br><img src="/img/202301262.jpg" srcset="/img/loading.gif" lazyload alt="img" title="m201-d"></p>
+<h3 id="2-3查看芯片"><a href="#2-3查看芯片" class="headerlink" title="2.3查看芯片"></a>2.3查看芯片</h3><p><strong>小心</strong>地拆开盒子（一定要小心，本人在拆的过程中成功磕掉一颗LED灯，还好不影响使用），可以看见这些东西<br><img src="/img/posts/202301262.jpg" srcset="/img/loading.gif" lazyload alt="img" title="m201-d"></p>
 <ol>
 <li>主芯片</li>
 <li>电源开关</li>
@@ -327,17 +339,17 @@
 <li>tf卡插槽</li>
 <li>usb2.0</li>
 </ol>
-<p>我们放大一下主芯片<br><img src="/img/202301261.jpg" srcset="/img/loading.gif" lazyload alt="img" title="m201-d"><br>看见主芯片型号为“S905L”</p>
+<p>我们放大一下主芯片<br><img src="/img/posts/202301261.jpg" srcset="/img/loading.gif" lazyload alt="img" title="m201-d"><br>看见主芯片型号为“S905L”</p>
 <h2 id="3-刷入armbian"><a href="#3-刷入armbian" class="headerlink" title="3 刷入armbian"></a>3 刷入armbian</h2><h3 id="3-1-下载armbian"><a href="#3-1-下载armbian" class="headerlink" title="3.1 下载armbian"></a>3.1 下载armbian</h3><p>打开<a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/releases/tag/Armbian_jammy_01.18.0157">这个链接</a>，选择一个适合你的芯片的固件下载。<br>如果下载太慢可以用<a target="_blank" rel="noopener" href="https://ghproxy.com/">GitHub Proxy</a>加速下载，IDM能跑满12MB&#x2F;s。</p>
 <h3 id="3-2-刷入U盘"><a href="#3-2-刷入U盘" class="headerlink" title="3.2 刷入U盘"></a>3.2 刷入U盘</h3><p>下载一个<a target="_blank" rel="noopener" href="https://github.com/balena-io/etcher/releases">balena-etcher</a>,<br>将下载的固件刷入U盘</p>
 <div class="note note-danger">
             <p>注意<br>这会格式化你的U盘</p>
           </div>
-<p><img src="/img/202301263.png" srcset="/img/loading.gif" lazyload alt="img" title="balena-etcher"><br>如果你的U盘有很大空闲空间，你也可以用DiskGenius扩容。</p>
+<p><img src="/img/posts/202301263.png" srcset="/img/loading.gif" lazyload alt="img" title="balena-etcher"><br>如果你的U盘有很大空闲空间，你也可以用DiskGenius扩容。</p>
 <div class="note note-warning">
             <p>注意，扩容的是ROOTFS分区，不是BOOT分区。</p>
           </div>
-<p><img src="/img/202301264.png" srcset="/img/loading.gif" lazyload alt="img" title="扩容"></p>
+<p><img src="/img/posts/202301264.png" srcset="/img/loading.gif" lazyload alt="img" title="扩容"></p>
 <h3 id="3-3-修改配置文件"><a href="#3-3-修改配置文件" class="headerlink" title="3.3 修改配置文件"></a>3.3 修改配置文件</h3><p><strong>重要的一步</strong><br>打开BOOT分区<br>依次打开dtb和amlogic文件夹，找到符合你的电视盒子芯片和型号的文件（例如meson-gxl-s905x-p212.dtb），将文件名复制下来<br>打开BOOT分区根目录下的uEnv.txt，将文件名粘贴到”FDT&#x3D;&#x2F;dtb&#x2F;amlogic&#x2F;“后面，例如</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">LINUX</span>=/zImage<br><span class="hljs-attribute">INITRD</span>=/uInitrd<br><span class="hljs-attribute">FDT</span>=/dtb/amlogic/meson-gxl-s905x-p212.dtb<br><span class="hljs-attribute">APPEND</span>=root=UUID=33dfc49b-e1f1-4b2d-8b95-4dfd62c5dac3 <span class="hljs-attribute">rootflags</span>=data=writeback rw <span class="hljs-attribute">rootfstype</span>=ext4 <span class="hljs-attribute">console</span>=ttyAML0,115200n8 <span class="hljs-attribute">console</span>=tty0 no_console_suspend <span class="hljs-attribute">consoleblank</span>=0 fsck.<span class="hljs-attribute">fix</span>=<span class="hljs-literal">yes</span> fsck.<span class="hljs-attribute">repair</span>=<span class="hljs-literal">yes</span> net.<span class="hljs-attribute">ifnames</span>=0 <span class="hljs-attribute">cgroup_enable</span>=cpuset <span class="hljs-attribute">cgroup_memory</span>=1 <span class="hljs-attribute">cgroup_enable</span>=memory <span class="hljs-attribute">swapaccount</span>=1<br></code></pre></td></tr></table></figure>
 <h3 id="3-4-重启"><a href="#3-4-重启" class="headerlink" title="3.4 重启"></a>3.4 重启</h3><p>把U盘插入魔百盒，<br>启动刚刚安装的Reboot to LibreELEC，点击”yes”，魔百盒重启。<br>先黑屏一会，就可以看见在滚Linux启动的输出了。</p>

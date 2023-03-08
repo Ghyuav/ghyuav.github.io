@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#3E5D8B">
+  <meta name="theme-color" content="#2F431E">
   <meta name="author" content="Ghyuav">
   <meta name="keywords" content="">
   
@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Ghyuav的博客">
 <meta property="og:description" content="Arch安装踩坑记哇，网上的教程真是让我大开眼界啊，有好多错误，坑一个比一个多，我也一个接一个踩。花了两天，整整两天啊(x_x)最后终于整理出了一个完美无瑕至少在我的电脑上可以使用的教程。注意，本教程仅适用于使用UEFI启动、插网线的机器 安装前必读！！！             ！！安装前必读！！如果你不懂”&#x2F;dev&#x2F;sda1”代表着什么，我劝你不要读这篇文章，更不要照着这篇">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ghyuav.netlify.app/img/20230119120405.png">
+<meta property="og:image" content="https://ghyuav.netlify.app/img/posts/20230119120405.png">
 <meta property="article:published_time" content="2023-01-18T10:27:19.000Z">
-<meta property="article:modified_time" content="2023-02-10T12:44:24.037Z">
+<meta property="article:modified_time" content="2023-03-08T07:51:03.963Z">
 <meta property="article:author" content="Ghyuav">
 <meta property="article:tag" content="Arch">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ghyuav.netlify.app/img/20230119120405.png">
+<meta name="twitter:image" content="https://ghyuav.netlify.app/img/posts/20230119120405.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -186,6 +186,18 @@
           
           
             <li class="nav-item">
+              <a class="nav-link" href="/links-page/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>链接墙</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
               <a class="nav-link" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html">
                 <i class="iconfont icon-md-train"></i>
                 <span>开往</span>
@@ -216,7 +228,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/20230119120405.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/posts/20230119120405.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -323,7 +335,7 @@
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gradle">Disk <span class="hljs-regexp">/dev/</span>sda: <span class="hljs-number">60</span> GIB, <span class="hljs-number">64424509440</span> bytes, <span class="hljs-number">125829120</span> sectors<br>Disk model: 乱七八糟的<br>Units: 还是乱七八糟的<br>Sector <span class="hljs-keyword">size</span> -------------------------<br>I/O <span class="hljs-keyword">size</span> -------------------------<br><br>Disk <span class="hljs-regexp">/dev/</span>sdb: <span class="hljs-number">120</span> GIB, -------------- bytes, -------------- sectors<br>Disk model: 乱七八糟的<br>Units: 还是乱七八糟的<br>Sector <span class="hljs-keyword">size</span> -------------------------<br>I/O <span class="hljs-keyword">size</span> -------------------------<br></code></pre></td></tr></table></figure>
 <p>这样的东西，选择一个你将要安装Arch的硬盘，比如说 “&#x2F;dev&#x2F;sda”<br>然后输入</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cfdisk <span class="hljs-regexp">/dev/</span>sda （这里是刚才选的要安装Arch的硬盘）<br></code></pre></td></tr></table></figure>
-<p>出现了一个图形化(?)界面<br><img src="/img/20230118191701.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/20230118193153.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p>
+<p>出现了一个图形化(?)界面<br><img src="/img/posts/20230118191701.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/posts/20230118193153.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Partition</span> size: <span class="hljs-number">60</span>G<br></code></pre></td></tr></table></figure>
 <p>将”60G”改为”512M”，按下回车，就创建完了一个分区<br>再这样创建三个分区，四个分区的大小分配大概是这样的</p>
 <table>
@@ -361,11 +373,11 @@
 </tr>
 </tbody></table>
 <p>怎么退出？</p>
-<p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/20230118194944.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p>
+<p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/posts/20230118194944.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p>
 <p>好的，你可以”空降”到<a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>了</p>
 <h5 id="单硬盘情况"><a href="#单硬盘情况" class="headerlink" title="单硬盘情况"></a>单硬盘情况</h5><p>输入</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cfdisk <span class="hljs-regexp">/dev/</span>sda （这里是刚才选的要安装Arch的硬盘）<br></code></pre></td></tr></table></figure>
-<p>出现了一个图形化(?)界面<br><img src="/img/20230118191701.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/20230118193153.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p>
+<p>出现了一个图形化(?)界面<br><img src="/img/posts/20230118191701.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>这里按一下”Enter”键<br><img src="/img/posts/20230118193153.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>在这个界面下当上面选中”&gt;&gt;&gt; Free space”时，下面选中”[  New  ]”，并按下回车。<br>下面显示</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Partition</span> size: <span class="hljs-number">60</span>G<br></code></pre></td></tr></table></figure>
 <p>将”60G”改为”512M”，按下回车，就创建完了一个分区<br>再这样创建三个分区，四个分区的大小分配大概是这样的</p>
 <table>
@@ -403,10 +415,10 @@
 </tr>
 </tbody></table>
 <p>怎么退出？</p>
-<p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/20230118194944.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p>
+<p>先别着急，现在退出只会让你前功尽弃<br><img src="/img/posts/20230118194944.png" srcset="/img/loading.gif" lazyload alt="img" title="cfdisk"><br>如图，把下面的光标对准”[  write  ]”，并按下回车保存分区表，再输入”yes”并回车<br>最后把下面的光标对准”[  Quit  ]”，并按下回车退出cfdisk。</p>
 <h4 id="2-4格式化"><a href="#2-4格式化" class="headerlink" title="2.4格式化"></a>2.4格式化</h4><p>输入</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">fdisk</span> -l （这是小写<span class="hljs-string">&quot;L&quot;</span>）<br></code></pre></td></tr></table></figure>
-<p>会输出<br><img src="/img/20230118195611.png" srcset="/img/loading.gif" lazyload alt="img" title="fdisk"></p>
+<p>会输出<br><img src="/img/posts/20230118195611.png" srcset="/img/loading.gif" lazyload alt="img" title="fdisk"></p>
 <p>对应着你自己的表格，<br>分别用</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkfs.fat -F32 <span class="hljs-regexp">/dev/</span>sda1 （sda1对应着启动分区）<br></code></pre></td></tr></table></figure>
 <p>格式化启动分区；</p>
@@ -474,7 +486,7 @@
 <p>回到live环境，<br>卸载本机的&#x2F;mnt目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">umount -R /mnt<br></code></pre></td></tr></table></figure>
 <p>最后reboot重启</p>
-<h3 id="大功告成！！"><a href="#大功告成！！" class="headerlink" title="大功告成！！"></a>大功告成！！</h3><p>大功告成<br>最终效果放出来：<br><img src="/img/20230119120405.png" srcset="/img/loading.gif" lazyload alt="img" title="arch"></p>
+<h3 id="大功告成！！"><a href="#大功告成！！" class="headerlink" title="大功告成！！"></a>大功告成！！</h3><p>大功告成<br>最终效果放出来：<br><img src="/img/posts/20230119120405.png" srcset="/img/loading.gif" lazyload alt="img" title="arch"></p>
 <p>我去，不知不觉写这么多，花了两天半，踩各种坑，虚拟机安一遍，实体机安一遍，可算是整完了</p>
 <p>待完善……</p>
 
